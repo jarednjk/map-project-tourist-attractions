@@ -10,7 +10,20 @@ function initMap() {
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
 }).addTo(map);
 
-   
+map.locate({setView: false});
+
+function onLocationFound(e) {
+    var radius = e.accuracy;
+    L.marker(e.latlng,).addTo(map).bindPopup(`<h1>YOU ARE HERE</h1>`).openPopup();
+    L.circle(e.latlng, 2000).addTo(map);
+}
+
+map.on('locationfound', onLocationFound);
+
+function onLocationError(e) {
+    alert(e.message);
+}
+map.on('locationerror', onLocationError);
     return map;
 }
 
