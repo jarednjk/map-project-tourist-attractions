@@ -28,3 +28,29 @@ map.on('locationerror', onLocationError);
 }
 
 let map = initMap();
+
+async function main() {
+    let attractionResponse = await axios.get('data/tourism.geojson');
+
+    let attractionLayer = L.geoJson(attractionResponse.data, {
+        "onEachFeature": function(feature, layer) {
+            let divElement = document.createElement('div');
+            divElement.innerHTML = feature.properties.description;
+            let columns = divElement.querySelectorAll('td');
+            let photo = columns[6].innerHTML;
+            let attractionName = columns[13].innerHTML;
+            let address = columns[21].innerHTML;
+            let description = columns[9].innerHTML;
+            let openingHours = columns[31].innerHTML;
+            layer.bindPopup(`
+            <img src='${photo}'>
+            <h2>${attractionName}</h2>
+            <p><strong>Address:</strong> ${address}</p>
+            <p><strong>Opening Hours:</strong> ${openingHours}</p>
+            <p><strong>Description:</strong> ${description}</p>
+            `);
+        }
+    }).addTo(map);
+
+}
+main();
