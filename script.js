@@ -27,48 +27,7 @@ function initMap() {
     return map;
 }
 
-// create museum icon
-let artsIcon = L.icon ({
-    iconUrl: 'img/arts.png',
-    iconSize: [30, 30],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -25],
-});
 
-let cultureIcon = L.icon ({
-    iconUrl: 'img/culture.png',
-    iconSize: [30, 30],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -25],
-});
-
-let historyIcon = L.icon ({
-    iconUrl: 'img/culture.png',
-    iconSize: [30, 30],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -25],
-});
-
-let architectureIcon = L.icon ({
-    iconUrl: 'img/culture.png',
-    iconSize: [30, 30],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -25],
-});
-
-let natureIcon = L.icon ({
-    iconUrl: 'img/nature.png',
-    iconSize: [30, 30],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -25],
-});
-
-let recreationIcon = L.icon ({
-    iconUrl: 'img/recreation.png',
-    iconSize: [30, 30],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -25],
-});
 
 let map = initMap();
 
@@ -135,17 +94,21 @@ async function main() {
     let architectureGroup = L.layerGroup();
     let recreationGroup = L.layerGroup();
 
-    // <a target="_blank" href="http://www.yoursingapore.com/content/dam/desktop/global/see-do-singapore/arts/1095-national-gallery-singapore-carousel-01-rec.jpg">www.yoursingapore.com/content/dam/desktop/global/see-do-singapore/arts/1095-national-gallery-singapore-carousel-01-rec.jpg</a>
+    // create weather group
+    let weatherForecast = L.layerGroup();
 
     for (let attraction of attractionResponse.data.features) {
+        // create coordinates of markers
         let lat = attraction.properties.Latitude;
         let lng = attraction.properties.Longtitude;
+        // create img
         let photo = attraction.properties['PHOTOURL'].split('"')[3];
-        // let img = attraction.properties['PHOTOURL']
+
+        // culture overlay
         if (attraction.properties['PHOTOURL'].includes('culture') || attraction.properties['PHOTOURL'].includes('places-to-see')) {
             L.marker([lat, lng], {icon:cultureIcon}).bindPopup(`
-            <h2>${attraction.properties.Name}</h2>
-            <img src="${photo}">
+            <h4>${attraction.properties.Name}</h4>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
@@ -153,10 +116,11 @@ async function main() {
             cultureMarker.addTo(cultureGroup);
         }
 
+        // recreation overlay
         else if (attraction.properties['PHOTOURL'].includes('recreation')) {
             L.marker([lat, lng], {icon: recreationIcon}).bindPopup(`
-            <h2>${attraction.properties.Name}</h2>
-            <img src="${photo}">
+            <h4>${attraction.properties.Name}</h4>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
@@ -164,10 +128,11 @@ async function main() {
             recreationMarker.addTo(recreationGroup);
         }
 
+        // arts overlay
         else if (attraction.properties['PHOTOURL'].includes('arts')) {
             L.marker([lat, lng], {icon:artsIcon}).bindPopup(`
-            <h2>${attraction.properties.Name}</h2>
-            <img src="${photo}">
+            <h4>${attraction.properties.Name}</h4>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
@@ -175,10 +140,11 @@ async function main() {
             artsMarker.addTo(artsGroup);
         }
 
+        // history overlay
         else if (attraction.properties['PHOTOURL'].includes('history')) {
             L.marker([lat, lng], {icon:historyIcon}).bindPopup(`
-            <h2>${attraction.properties.Name}</h2>
-            <img src="${photo}">
+            <h4>${attraction.properties.Name}</h4>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
@@ -186,10 +152,11 @@ async function main() {
             historyMarker.addTo(historyGroup);
         }
 
+        // nature overlay
         else if (attraction.properties['PHOTOURL'].includes('nature')) {
             L.marker([lat, lng], {icon:natureIcon}).bindPopup(`
-            <h2>${attraction.properties.Name}</h2>
-            <img src="${photo}">
+            <h4>${attraction.properties.Name}</h4>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
@@ -197,10 +164,11 @@ async function main() {
             natureMarker.addTo(natureGroup);
         }
 
+        // architecture overlay
         else if (attraction.properties['PHOTOURL'].includes('architecture')) {
             L.marker([lat, lng], {icon:architectureIcon}).bindPopup(`
-            <h2>${attraction.properties.Name}</h2>
-            <img src="${photo}">
+            <h4>${attraction.properties.Name}</h4>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
@@ -208,6 +176,7 @@ async function main() {
             architectureMarker.addTo(architectureGroup);
         }
 
+    // add the overlays to checkboxes
     }
     let overlays = {
         'Culture': cultureGroup,
@@ -219,12 +188,109 @@ async function main() {
     }
 
     L.control.layers({}, overlays).addTo(map);
+
     cultureGroup.addTo(map);
     artsGroup.addTo(map);
     historyGroup.addTo(map);
     natureGroup.addTo(map);
     architectureGroup.addTo(map);
     recreationGroup.addTo(map);
+
+    // document.querySelectorAll('.marker').addEventListener('click', function(){
+    //     map.flyTo(coordinate, 16);
+    //     marker.openPopup();
+    // })
+
+    // Weather API
+    let weatherOverlay = L.layerGroup();
+    let response = await axios.get(WEATHER_API_URL);
+
+    let weatherArray = [];
+    for (let weather of response.data.items[0].forecasts){
+        weatherArray.push(weather.forecast);
+    }
+
+    let areaCoordinates = response.data.area_metadata;
+
+    for (let i = 0; i < weatherArray.length; i++){
+        areaCoordinates[i].forecast = weatherArray[i]; 
+    }
+
+    for (let area of areaCoordinates){
+        let lat = area.label_location.latitude;
+        let lng = area.label_location.longitude;
+        
+
+        if (area.forecast == 'Cloudy'){
+            L.marker([lat,lng],{icon:cloudy}).bindPopup(`
+            <h4>${area.name}</h4>
+            <p>${area.forecast}</p>
+            `).addTo(map)
+        }
+
+        if (area.forecast == 'Fair & Warm' || area.forecast == 'Fair (Day)'){
+            L.marker([lat,lng],{icon:sunny}).bindPopup(`
+            <h4>${area.name}</h4>
+            <p>${area.forecast}</p>
+            `).addTo(map)
+        }
+
+        if (area.forecast == 'Partly Cloudy (Day)'){
+            L.marker([lat,lng],{icon:cloudyDay}).bindPopup(`
+            <h4>${area.name}</h4>
+            <p>${area.forecast}</p>
+            `).addTo(map)
+        }
+
+        if (area.forecast == 'Partly Cloudy (Night)'){
+            L.marker([lat,lng],{icon:cloudyNight}).bindPopup(`
+            <h4>${area.name}</h4>
+            <p>${area.forecast}</p>
+            `).addTo(map)
+        }
+
+        if (area.forecast == 'Fair (Night)'){
+            L.marker([lat,lng],{icon:night}).bindPopup(`
+            <h4>${area.name}</h4>
+            <p>${area.forecast}</p>
+            `).addTo(map)
+        }
+
+        if (area.forecast == 'Light Showers' || area.forecast == 'Light Rain'){
+            L.marker([lat,lng],{icon:drizzle}).bindPopup(`
+            <h4>${area.name}</h4>
+            <p>${area.forecast}</p>
+            `).addTo(map)
+        }
+
+        if (area.forecast == 'Showers' || area.forecast == 'Moderate Rain'){
+            L.marker([lat,lng],{icon:showers}).bindPopup(`
+            <h4>${area.name}</h4>
+            <p>${area.forecast}</p>
+            `).addTo(map)
+        }
+
+        if (area.forecast == 'Thundery Showers' || area.forecast == 'Heavy Thundery Showers'){
+            L.marker([lat,lng],{icon:thunder}).bindPopup(`
+            <h4>${area.name}</h4>
+            <p>${area.forecast}</p>
+            `).addTo(map)
+        }
+
+    }
+    //     for (let weather of response.data.items[0].forecasts){
+    //         // if (weather.forecast == 'Partly Cloudy (Day)') 
+    //         {
+    //             console.log(weather.forecast);
+    //             L.marker([lat,lng]).bindPopup(`
+    //             <h4>${weather.area}</h4>
+    //             <p>${weather.forecast}</p>
+    //             `).addTo(map)
+    //         }
+            
+    //  }
+    // }
+
 
 }
 
