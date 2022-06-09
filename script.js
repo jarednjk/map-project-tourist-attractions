@@ -220,7 +220,6 @@ async function main() {
         let lat = area.label_location.latitude;
         let lng = area.label_location.longitude;
         
-
         if (area.forecast == 'Cloudy'){
             L.marker([lat,lng],{icon:cloudy}).bindPopup(`
             <h4>${area.name}</h4>
@@ -278,19 +277,7 @@ async function main() {
         }
 
     }
-    //     for (let weather of response.data.items[0].forecasts){
-    //         // if (weather.forecast == 'Partly Cloudy (Day)') 
-    //         {
-    //             console.log(weather.forecast);
-    //             L.marker([lat,lng]).bindPopup(`
-    //             <h4>${weather.area}</h4>
-    //             <p>${weather.forecast}</p>
-    //             `).addTo(map)
-    //         }
-            
-    //  }
-    // }
-
+   
 
 }
 

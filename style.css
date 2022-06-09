@@ -17,6 +17,14 @@
     padding: 20px 0px 0px 10px;
 }
 
-#search-btn {
+#btn-nearby-search {
     margin-left: 10px;
+}
+
+#weather-toggle {
+    /* font-size: 22px; */
+}
+
+.input-group {
+    width: 400px;
 }
