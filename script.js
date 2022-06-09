@@ -75,27 +75,80 @@ async function main() {
 
     let attractionResponse = await axios.get('data/tourism.geojson');
 
-    let attractionLayer = L.geoJson(attractionResponse.data, {
-        "onEachFeature": function (feature, layer) {
-            let divElement = document.createElement('div');
-            divElement.innerHTML = feature.properties.description;
-            let columns = divElement.querySelectorAll('td');
-            // let photo = columns[7].innerText;
-            let attractionName = columns[13].innerHTML;
-            let address = columns[21].innerHTML;
-            let description = columns[25].innerHTML;
-            let openingHours = columns[31].innerHTML;
-            layer.bindPopup(`
-            <h2>${attractionName}</h2>
-            <p><strong>Address:</strong> ${address}</p>
-            <p><strong>Opening Hours:</strong> ${openingHours}</p>
-            <p><strong>Description:</strong> ${description}</p>
-            `);
+
+    // create culture group
+    let cultureGroup = L.markerClusterGroup();
+    let artsGroup = L.markerClusterGroup();
+    let historyGroup = L.markerClusterGroup();
+    let natureGroup = L.markerClusterGroup();
+    let architectureGroup = L.markerClusterGroup();
+    let placesToSeeGroup = L.markerClusterGroup();
+
+
+    for (let attraction of attractionResponse.data.features) {
+        let lat = attraction.properties.Latitude;
+        let lng = attraction.properties.Longtitude;
+        if (attraction.properties['PHOTOURL'].includes('culture')) {
+            L.marker([lat, lng]).bindPopup(`
+            <h2>${attraction.properties.Name}</h2>
+            <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
+            <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
+            <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            `).addTo(cultureGroup);
+            cultureGroup.addTo(map);
         }
-    }).addTo(map);
-    attractionLayer.on('click', function (e) {
-        map.flyTo(e.latlng, 15)
-    })
+
+        else if (attraction.properties['PHOTOURL'].includes('places-to-see')) {
+            L.marker([lat, lng]).bindPopup(`
+            <h2>${attraction.properties.Name}</h2>
+            <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
+            <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
+            <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            `).addTo(placesToSeeGroup);
+            placesToSeeGroup.addTo(map);
+        }
+
+        else if (attraction.properties['PHOTOURL'].includes('arts')) {
+            L.marker([lat, lng]).bindPopup(`
+            <h2>${attraction.properties.Name}</h2>
+            <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
+            <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
+            <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            `).addTo(artsGroup);
+            artsGroup.addTo(map);
+        }
+
+        else if (attraction.properties['PHOTOURL'].includes('history')) {
+            L.marker([lat, lng]).bindPopup(`
+            <h2>${attraction.properties.Name}</h2>
+            <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
+            <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
+            <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            `).addTo(historyGroup);
+            historyGroup.addTo(map);
+        }
+
+        else if (attraction.properties['PHOTOURL'].includes('arts')) {
+            L.marker([lat, lng]).bindPopup(`
+            <h2>${attraction.properties.Name}</h2>
+            <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
+            <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
+            <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            `).addTo(natureGroup);
+            natureGroup.addTo(map);
+        }
+
+        else if (attraction.properties['PHOTOURL'].includes('architecture')) {
+            L.marker([lat, lng]).bindPopup(`
+            <h2>${attraction.properties.Name}</h2>
+            <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
+            <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
+            <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            `).addTo(architectureGroup);
+            architectureGroup.addTo(map);
+        }
+    }
+
 }
 
 main();
