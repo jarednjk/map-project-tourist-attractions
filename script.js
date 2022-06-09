@@ -27,6 +27,49 @@ function initMap() {
     return map;
 }
 
+// create museum icon
+let artsIcon = L.icon ({
+    iconUrl: 'img/arts.png',
+    iconSize: [30, 30],
+    iconAnchor: [20, 20],
+    popupAnchor: [0, -25],
+});
+
+let cultureIcon = L.icon ({
+    iconUrl: 'img/culture.png',
+    iconSize: [30, 30],
+    iconAnchor: [20, 20],
+    popupAnchor: [0, -25],
+});
+
+let historyIcon = L.icon ({
+    iconUrl: 'img/culture.png',
+    iconSize: [30, 30],
+    iconAnchor: [20, 20],
+    popupAnchor: [0, -25],
+});
+
+let architectureIcon = L.icon ({
+    iconUrl: 'img/culture.png',
+    iconSize: [30, 30],
+    iconAnchor: [20, 20],
+    popupAnchor: [0, -25],
+});
+
+let natureIcon = L.icon ({
+    iconUrl: 'img/nature.png',
+    iconSize: [30, 30],
+    iconAnchor: [20, 20],
+    popupAnchor: [0, -25],
+});
+
+let recreationIcon = L.icon ({
+    iconUrl: 'img/recreation.png',
+    iconSize: [30, 30],
+    iconAnchor: [20, 20],
+    popupAnchor: [0, -25],
+});
+
 let map = initMap();
 
 async function main() {
@@ -77,77 +120,111 @@ async function main() {
 
 
     // create culture group
-    let cultureGroup = L.markerClusterGroup();
-    let artsGroup = L.markerClusterGroup();
-    let historyGroup = L.markerClusterGroup();
-    let natureGroup = L.markerClusterGroup();
-    let architectureGroup = L.markerClusterGroup();
-    let placesToSeeGroup = L.markerClusterGroup();
+    // places-to-see
+    let cultureMarker = L.markerClusterGroup();
+    let artsMarker = L.markerClusterGroup();
+    let historyMarker = L.markerClusterGroup();
+    let natureMarker = L.markerClusterGroup();
+    let architectureMarker = L.markerClusterGroup();
+    let recreationMarker = L.markerClusterGroup();
 
+    let cultureGroup = L.layerGroup();
+    let artsGroup = L.layerGroup();
+    let historyGroup = L.layerGroup();
+    let natureGroup = L.layerGroup();
+    let architectureGroup = L.layerGroup();
+    let recreationGroup = L.layerGroup();
+
+    // <a target="_blank" href="http://www.yoursingapore.com/content/dam/desktop/global/see-do-singapore/arts/1095-national-gallery-singapore-carousel-01-rec.jpg">www.yoursingapore.com/content/dam/desktop/global/see-do-singapore/arts/1095-national-gallery-singapore-carousel-01-rec.jpg</a>
 
     for (let attraction of attractionResponse.data.features) {
         let lat = attraction.properties.Latitude;
         let lng = attraction.properties.Longtitude;
-        if (attraction.properties['PHOTOURL'].includes('culture')) {
-            L.marker([lat, lng]).bindPopup(`
+        let photo = attraction.properties['PHOTOURL'].split('"')[3];
+        // let img = attraction.properties['PHOTOURL']
+        if (attraction.properties['PHOTOURL'].includes('culture') || attraction.properties['PHOTOURL'].includes('places-to-see')) {
+            L.marker([lat, lng], {icon:cultureIcon}).bindPopup(`
             <h2>${attraction.properties.Name}</h2>
+            <img src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            `).addTo(cultureGroup);
-            cultureGroup.addTo(map);
+            `).addTo(cultureMarker);
+            cultureMarker.addTo(cultureGroup);
         }
 
-        else if (attraction.properties['PHOTOURL'].includes('places-to-see')) {
-            L.marker([lat, lng]).bindPopup(`
+        else if (attraction.properties['PHOTOURL'].includes('recreation')) {
+            L.marker([lat, lng], {icon: recreationIcon}).bindPopup(`
             <h2>${attraction.properties.Name}</h2>
+            <img src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            `).addTo(placesToSeeGroup);
-            placesToSeeGroup.addTo(map);
+            `).addTo(recreationMarker);
+            recreationMarker.addTo(recreationGroup);
         }
 
         else if (attraction.properties['PHOTOURL'].includes('arts')) {
-            L.marker([lat, lng]).bindPopup(`
+            L.marker([lat, lng], {icon:artsIcon}).bindPopup(`
             <h2>${attraction.properties.Name}</h2>
+            <img src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            `).addTo(artsGroup);
-            artsGroup.addTo(map);
+            `).addTo(artsMarker);
+            artsMarker.addTo(artsGroup);
         }
 
         else if (attraction.properties['PHOTOURL'].includes('history')) {
-            L.marker([lat, lng]).bindPopup(`
+            L.marker([lat, lng], {icon:historyIcon}).bindPopup(`
             <h2>${attraction.properties.Name}</h2>
+            <img src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            `).addTo(historyGroup);
-            historyGroup.addTo(map);
+            `).addTo(historyMarker);
+            historyMarker.addTo(historyGroup);
         }
 
-        else if (attraction.properties['PHOTOURL'].includes('arts')) {
-            L.marker([lat, lng]).bindPopup(`
+        else if (attraction.properties['PHOTOURL'].includes('nature')) {
+            L.marker([lat, lng], {icon:natureIcon}).bindPopup(`
             <h2>${attraction.properties.Name}</h2>
+            <img src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            `).addTo(natureGroup);
-            natureGroup.addTo(map);
+            `).addTo(natureMarker);
+            natureMarker.addTo(natureGroup);
         }
 
         else if (attraction.properties['PHOTOURL'].includes('architecture')) {
-            L.marker([lat, lng]).bindPopup(`
+            L.marker([lat, lng], {icon:architectureIcon}).bindPopup(`
             <h2>${attraction.properties.Name}</h2>
+            <img src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            `).addTo(architectureGroup);
-            architectureGroup.addTo(map);
+            `).addTo(architectureMarker);
+            architectureMarker.addTo(architectureGroup);
         }
+
     }
+    let overlays = {
+        'Culture': cultureGroup,
+        'Arts': artsGroup,
+        'History': historyGroup,
+        'Nature': natureGroup,
+        'Architecture': architectureGroup,
+        'Recreation': recreationGroup
+    }
+
+    L.control.layers({}, overlays).addTo(map);
+    cultureGroup.addTo(map);
+    artsGroup.addTo(map);
+    historyGroup.addTo(map);
+    natureGroup.addTo(map);
+    architectureGroup.addTo(map);
+    recreationGroup.addTo(map);
 
 }
 
