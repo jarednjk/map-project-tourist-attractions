@@ -22,27 +22,62 @@
 </head>
 
 <body>
-    <div class="container">
-        
-            <div id="top-layer" class="d-flex justify-content-between py-3">
+    <!-- LANDING PAGE -->
+
+    <div id="home" class="d-flex align-items-center justify-content-center pb-5">
+        <div class="text-center">
+            <img src="img/attraction/merlion.png" width="140" class="text-shadow">
+            <div class="mt-3">
+                <h1 class="text-white text-shadow">Unsure Where To Go?</h1>
+                <p class="text-white text-shadow">EXPLORE THE TOURIST ATTRACTIONS IN SINGAPORE</p>
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search Attraction e.g. gardens by the bay" id="attraction-search">
-                   
-                        <button id="btn-attraction-search" class="btn btn-primary" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-             </div>
-                <button id="weather-toggle" class="btn btn-outline-primary">Weather Forecast <i
-                    class="fa-solid fa-cloud-sun"></i></button>
+                    <input class="form-control" type="text" placeholder="Search attraction e.g. gardens by the bay"
+                        id="attraction-search">
+                    <button id="btn-attraction-search" class="btn btn-primary" type="button"><i
+                            class="fa fa-search"></i></button>
+                </div>
             </div>
-        <div id="map-container">
-            <div id="map"></div>
-            <div id="search-container">
-                <input id="nearby-search" type="text" />
-                <button id="btn-nearby-search">Search</button>
-                <div id="results"></div>
+        </div>
+        <!-- subscribe to email -->
+        <div id="email-subscribe" class="card p-4">
+            <div class="d-flex flex-row">
+                <div class="d-flex flex-column">
+                    <h5 class="mb-0">Get access to exclusive tourism deals</h5>
+                    <div class="text-left">
+                        <span>We will send only the best deals to you!</span>
+                    </div>
+                </div>
             </div>
+            <div class="input-group d-flex gap-2 align-items-center mt-2">
+                <input class="form-control" placeholder="e.g. john@gmail.com">
+                <button class="btn btn-primary">Notify Me</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div id="top-layer" class="d-flex justify-content-between py-3">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search Attraction e.g. gardens by the bay"
+                id="attraction-search">
+
+            <button id="btn-attraction-search" class="btn btn-primary" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+            </span>
+        </div>
+        <button id="weather-toggle" class="btn btn-outline-primary">Weather Forecast <i
+                class="fa-solid fa-cloud-sun"></i></button>
+    </div> -->
+
+    <!-- MAP -->
+    <div id="map-container">
+        <div id="map"></div>
+        <div id="search-container">
+            <input id="nearby-search" type="text" />
+            <button id="btn-nearby-search">Search</button>
+            <div id="results"></div>
         </div>
     </div>
 

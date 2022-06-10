@@ -1,5 +1,5 @@
 #map {
-    height: 100vh;
+    height: 90vh;
 }
 
 #map-container {
@@ -26,5 +26,26 @@
 }
 
 .input-group {
-    width: 400px;
+    /* width: 400px; */
+}
+
+#home {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-color:#999; 
+    background-blend-mode: multiply;
+    transition: all .2s ease;
+    position: relative;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 6px #333 ;
+}
+
+#email-subscribe {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
 }

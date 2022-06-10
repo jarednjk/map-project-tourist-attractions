@@ -14,7 +14,7 @@ function initMap() {
 
     function onLocationFound(e) {
         var radius = e.accuracy;
-        L.marker(e.latlng,).addTo(map).bindPopup(`<h1>YOU ARE HERE</h1>`).openPopup();
+        L.marker(e.latlng, {icon:currentLocationIcon}).addTo(map).bindPopup(`<h4>YOU ARE HERE</h4>`).openPopup();
         L.circle(e.latlng, 2000).addTo(map);
     }
 

@@ -1,4 +1,12 @@
-// create museum icon
+// create YOU ARE HERE icon
+let currentLocationIcon = L.icon ({
+    iconUrl: 'img/attraction/currentLocation.png',
+    iconSize: [35, 35],
+    iconAnchor: [18, 27],
+    popupAnchor: [0, -25],
+});
+
+// create tourist attraction icons
 let artsIcon = L.icon ({
     iconUrl: 'img/attraction/arts.png',
     iconSize: [35, 35],
