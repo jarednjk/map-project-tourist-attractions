@@ -31,6 +31,23 @@ function initMap() {
 
 let map = initMap();
 
+// function loadScreensaver(){
+
+//     let screensaverArray = [];
+//     for (let i=1; i<9; i++) {
+//         screensaverArray.push(`img/screensaver/attraction${i}.jpeg`)
+//     }
+    
+//     let randomScreensaver = document.querySelector('#home');
+//     randomScreensaver.style.backgroundImage = `url(${screensaverArray[i]})`;
+
+   
+// }
+
+// setInterval(() => {
+//     loadScreensaver();
+// }, 4000);
+
 async function main() {
 
     // window.addEventListener('DOMContentLoaded', async function () {
