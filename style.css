@@ -2,6 +2,11 @@
     height: 90vh;
 }
 
+/* .carousel-item {
+    height: 100vh;
+    min-height: 350px;
+  } */
+
 #map-container {
     position: relative;
 }
@@ -23,6 +28,10 @@
 
 #weather-toggle {
     /* font-size: 22px; */
+    position: absolute;
+    z-index: 314159;
+    top: 11px;
+    right: 66px;
 }
 
 .input-group {
@@ -30,7 +39,6 @@
 }
 
 #home {
-    width: 100%;
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat; 
@@ -52,7 +60,6 @@
 
 #search-box {
     position: absolute;
-    z-index: 20000;
     top: 200px;
     margin-left: auto;
     margin-right: auto;

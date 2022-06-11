@@ -31,24 +31,9 @@ function initMap() {
 
 let map = initMap();
 
-// function loadScreensaver(){
-
-//     let screensaverArray = [];
-//     for (let i=1; i<9; i++) {
-//         screensaverArray.push(`img/screensaver/attraction${i}.jpeg`)
-//     }
-    
-//     let randomScreensaver = document.querySelector('#home');
-//     randomScreensaver.style.backgroundImage = `url(${screensaverArray[i]})`;
-
-   
-// }
-
-// setInterval(() => {
-//     loadScreensaver();
-// }, 4000);
 
 async function main() {
+
 
     // window.addEventListener('DOMContentLoaded', async function () {
     //     let searchResultLayer = L.layerGroup();
@@ -241,57 +226,67 @@ async function main() {
             L.marker([lat,lng],{icon:cloudy}).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
-            `).addTo(map)
+            `).addTo(weatherOverlay)
         }
 
         if (area.forecast == 'Fair & Warm' || area.forecast == 'Fair (Day)'){
             L.marker([lat,lng],{icon:sunny}).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
-            `).addTo(map)
+            `).addTo(weatherOverlay)
         }
 
         if (area.forecast == 'Partly Cloudy (Day)'){
             L.marker([lat,lng],{icon:cloudyDay}).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
-            `).addTo(map)
+            `).addTo(weatherOverlay)
         }
 
         if (area.forecast == 'Partly Cloudy (Night)'){
             L.marker([lat,lng],{icon:cloudyNight}).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
-            `).addTo(map)
+            `).addTo(weatherOverlay)
         }
 
         if (area.forecast == 'Fair (Night)'){
             L.marker([lat,lng],{icon:night}).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
-            `).addTo(map)
+            `).addTo(weatherOverlay)
         }
 
         if (area.forecast == 'Light Showers' || area.forecast == 'Light Rain'){
             L.marker([lat,lng],{icon:drizzle}).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
-            `).addTo(map)
+            `).addTo(weatherOverlay)
         }
 
         if (area.forecast == 'Showers' || area.forecast == 'Moderate Rain'){
             L.marker([lat,lng],{icon:showers}).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
-            `).addTo(map)
+            `).addTo(weatherOverlay)
         }
 
         if (area.forecast == 'Thundery Showers' || area.forecast == 'Heavy Thundery Showers'){
             L.marker([lat,lng],{icon:thunder}).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
-            `).addTo(map)
+            `).addTo(weatherOverlay)
         }
+
+        // create eventlistener for weather
+        document.querySelector("#weather-toggle").addEventListener('click', function(){
+            if (map.hasLayer(weatherOverlay)) {
+                map.removeLayer(weatherOverlay);
+            }
+            else {
+                weatherOverlay.addTo(map);
+            }
+        })
 
     }
    
@@ -299,3 +294,10 @@ async function main() {
 }
 
 main();
+
+let map1 = document.querySelector('#map-container');
+let landingPage = document.querySelector('#home');
+document.querySelector('#btn-attraction-search').addEventListener('click', function(){
+    // landingPage.style.display = 'none';
+    map1.className = '';
+})
