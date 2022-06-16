@@ -1,5 +1,5 @@
 #map {
-    height: 90vh;
+    height: 100vh;
 }
 
 /* .carousel-item {
@@ -22,7 +22,7 @@
     padding: 20px 0px 0px 10px;
 }
 
-#btn-nearby-search {
+#btn-attraction-search {
     margin-left: 10px;
 }
 
@@ -77,4 +77,8 @@
     right:0;
     background:#000;
     opacity:0.5;
+}
+
+ul {
+    padding-left: 0;
 }

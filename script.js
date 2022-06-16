@@ -14,7 +14,7 @@ function initMap() {
 
     function onLocationFound(e) {
         var radius = e.accuracy;
-        L.marker(e.latlng, {icon:currentLocationIcon}).addTo(map).bindPopup(`<h4>YOU ARE HERE</h4>`).openPopup();
+        L.marker(e.latlng, { icon: currentLocationIcon }).addTo(map).bindPopup(`<h4>YOU ARE HERE</h4>`).openPopup();
         L.circle(e.latlng, 2000).addTo(map);
     }
 
@@ -34,54 +34,18 @@ let map = initMap();
 
 async function main() {
 
+ // email
 
-    // window.addEventListener('DOMContentLoaded', async function () {
-    //     let searchResultLayer = L.layerGroup();
-    //     searchResultLayer.addTo(map)
+    // document.querySelector('#email-submit').addEventListener('click', function(){
+    //     let isEmailInvalid = false;
+    //     let email = document.querySelector('#txt-email').value;
 
-    //     document.querySelector('#btnSearch').addEventListener('click', async function () {
-
-    //         // clear existing markers from the search result layer
-    //         searchResultLayer.clearLayers(); //<-- will delete all layers inside it
-
-    //         // clear existing search results
-    //         document.querySelector('#results').innerHTML = "";
-
-    //         let query = document.querySelector('#txtSearch').value;
-    //         let latlng = map.getBounds().getCenter();
-    //         let locations = await search(latlng.lat, latlng.lng, query, 4000);
-    //         for (let result of locations.results) {
-
-    //             // create markers and put on map
-    //             let lat = result.geocodes.main.latitude;
-    //             let lng = result.geocodes.main.longitude;
-
-    //             let marker = L.marker([lat, lng]).addTo(searchResultLayer);
-
-    //             marker.bindPopup(`<h1>${result.name}</h1>
-    //            <p>${result.location.address} 
-    //            ${result.location.address_extended ? ", " + result.location.address_extended
-    //                     : ""}</p>`)
-
-    //             // create the search result entry and display under the search
-    //             let resultElement = document.createElement('div');
-    //             resultElement.className = "search-result";
-    //             resultElement.innerHTML = result.name;
-    //             resultElement.addEventListener('click', function () {
-    //                 map.flyTo([lat, lng], 16)
-    //                 marker.openPopup();
-    //             })
-
-    //             document.querySelector("#results").appendChild(resultElement);
-    //         }
-    //     })
+    //     if (!email.includes)
     // })
 
     let attractionResponse = await axios.get('data/tourism.geojson');
 
-
-    // create culture group
-    // places-to-see
+    // create attraction cluster and group
     let cultureMarker = L.markerClusterGroup();
     let artsMarker = L.markerClusterGroup();
     let historyMarker = L.markerClusterGroup();
@@ -95,9 +59,50 @@ async function main() {
     let natureGroup = L.layerGroup();
     let architectureGroup = L.layerGroup();
     let recreationGroup = L.layerGroup();
+    
+    let attractionArray = attractionResponse.data.features.map((obj)=>{
+        return {
+            name: obj.properties.Name,
+            coordinates: [obj.properties.Latitude, obj.properties.Longtitude]
+        }
+    });
 
-    // create weather group
-    let weatherForecast = L.layerGroup();
+    // create search bar 
+    let searchBar = document.querySelector('#attraction-search');
+    
+    // see if searchstring is found in the array
+    searchBar.addEventListener('keyup', (e) => {
+        const resultsHeader = document.getElementById("results-header");
+        resultsHeader.innerHTML = '';
+        
+        let searchString = e.target.value.toLowerCase();
+        let filteredAttractions = attractionArray.filter(function(elem){
+            return (elem.name.toLowerCase().includes(searchString));
+        });
+        console.log(filteredAttractions);
+        
+        if (searchString.length <= 1) {
+            document.querySelector('#results-header').innerHTML = "";
+        } else {
+            if (filteredAttractions.length >= 1) {
+                for (let i=0; i<filteredAttractions.length; i++) {
+                    let searchResults = document.createElement('li');
+                    searchResults.style.listStyleType = 'none';
+                    document.querySelector('#results-header').appendChild(searchResults);
+                    searchResults.id = 'attraction-' + i
+                    searchResults.innerHTML = `${filteredAttractions[i].name}`;
+                    
+                    // flyto coordinates
+                    document.querySelector(`#attraction-${i}`).addEventListener('click', function(){
+                        map.flyTo(filteredAttractions[i].coordinates , 16)
+                    })
+                }
+            } 
+            else {
+                document.querySelector('#results-header').innerHTML = "";
+            }
+        }
+    });
 
     for (let attraction of attractionResponse.data.features) {
         // create coordinates of markers
@@ -108,7 +113,7 @@ async function main() {
 
         // culture overlay
         if (attraction.properties['PHOTOURL'].includes('culture') || attraction.properties['PHOTOURL'].includes('places-to-see')) {
-            L.marker([lat, lng], {icon:cultureIcon}).bindPopup(`
+            L.marker([lat, lng], { icon: cultureIcon, autoPanOnFocus: true }).bindPopup(`
             <h4>${attraction.properties.Name}</h4>
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
@@ -120,7 +125,7 @@ async function main() {
 
         // recreation overlay
         else if (attraction.properties['PHOTOURL'].includes('recreation')) {
-            L.marker([lat, lng], {icon: recreationIcon}).bindPopup(`
+            L.marker([lat, lng], { icon: recreationIcon, autoPanOnFocus: true }).bindPopup(`
             <h4>${attraction.properties.Name}</h4>
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
@@ -132,7 +137,7 @@ async function main() {
 
         // arts overlay
         else if (attraction.properties['PHOTOURL'].includes('arts')) {
-            L.marker([lat, lng], {icon:artsIcon}).bindPopup(`
+            L.marker([lat, lng], { icon: artsIcon, autoPanOnFocus: true }).bindPopup(`
             <h4>${attraction.properties.Name}</h4>
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
@@ -144,7 +149,7 @@ async function main() {
 
         // history overlay
         else if (attraction.properties['PHOTOURL'].includes('history')) {
-            L.marker([lat, lng], {icon:historyIcon}).bindPopup(`
+            L.marker([lat, lng], { icon: historyIcon, autoPanOnFocus: true }).bindPopup(`
             <h4>${attraction.properties.Name}</h4>
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
@@ -156,7 +161,7 @@ async function main() {
 
         // nature overlay
         else if (attraction.properties['PHOTOURL'].includes('nature')) {
-            L.marker([lat, lng], {icon:natureIcon}).bindPopup(`
+            L.marker([lat, lng], { icon: natureIcon, autoPanOnFocus: true }).bindPopup(`
             <h4>${attraction.properties.Name}</h4>
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
@@ -168,7 +173,7 @@ async function main() {
 
         // architecture overlay
         else if (attraction.properties['PHOTOURL'].includes('architecture')) {
-            L.marker([lat, lng], {icon:architectureIcon}).bindPopup(`
+            L.marker([lat, lng], { icon: architectureIcon, autoPanOnFocus: true }).bindPopup(`
             <h4>${attraction.properties.Name}</h4>
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
@@ -177,9 +182,9 @@ async function main() {
             `).addTo(architectureMarker);
             architectureMarker.addTo(architectureGroup);
         }
+    }
 
     // add the overlays to checkboxes
-    }
     let overlays = {
         'Culture': cultureGroup,
         'Arts': artsGroup,
@@ -198,106 +203,100 @@ async function main() {
     architectureGroup.addTo(map);
     recreationGroup.addTo(map);
 
-    // document.querySelectorAll('.marker').addEventListener('click', function(){
-    //     map.flyTo(coordinate, 16);
-    //     marker.openPopup();
-    // })
-
     // Weather API
     let weatherOverlay = L.layerGroup();
     let response = await axios.get(WEATHER_API_URL);
 
     let weatherArray = [];
-    for (let weather of response.data.items[0].forecasts){
+    for (let weather of response.data.items[0].forecasts) {
         weatherArray.push(weather.forecast);
     }
 
     let areaCoordinates = response.data.area_metadata;
 
-    for (let i = 0; i < weatherArray.length; i++){
-        areaCoordinates[i].forecast = weatherArray[i]; 
+    for (let i = 0; i < weatherArray.length; i++) {
+        areaCoordinates[i].forecast = weatherArray[i];
     }
 
-    for (let area of areaCoordinates){
+    for (let area of areaCoordinates) {
         let lat = area.label_location.latitude;
         let lng = area.label_location.longitude;
-        
-        if (area.forecast == 'Cloudy'){
-            L.marker([lat,lng],{icon:cloudy}).bindPopup(`
+
+        if (area.forecast == 'Cloudy') {
+            L.marker([lat, lng], { icon: cloudy }).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
             `).addTo(weatherOverlay)
         }
 
-        if (area.forecast == 'Fair & Warm' || area.forecast == 'Fair (Day)'){
-            L.marker([lat,lng],{icon:sunny}).bindPopup(`
+        if (area.forecast == 'Fair & Warm' || area.forecast == 'Fair (Day)') {
+            L.marker([lat, lng], { icon: sunny }).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
             `).addTo(weatherOverlay)
         }
 
-        if (area.forecast == 'Partly Cloudy (Day)'){
-            L.marker([lat,lng],{icon:cloudyDay}).bindPopup(`
+        if (area.forecast == 'Partly Cloudy (Day)') {
+            L.marker([lat, lng], { icon: cloudyDay }).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
             `).addTo(weatherOverlay)
         }
 
-        if (area.forecast == 'Partly Cloudy (Night)'){
-            L.marker([lat,lng],{icon:cloudyNight}).bindPopup(`
+        if (area.forecast == 'Partly Cloudy (Night)') {
+            L.marker([lat, lng], { icon: cloudyNight }).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
             `).addTo(weatherOverlay)
         }
 
-        if (area.forecast == 'Fair (Night)'){
-            L.marker([lat,lng],{icon:night}).bindPopup(`
+        if (area.forecast == 'Fair (Night)') {
+            L.marker([lat, lng], { icon: night }).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
             `).addTo(weatherOverlay)
         }
 
-        if (area.forecast == 'Light Showers' || area.forecast == 'Light Rain'){
-            L.marker([lat,lng],{icon:drizzle}).bindPopup(`
+        if (area.forecast == 'Light Showers' || area.forecast == 'Light Rain') {
+            L.marker([lat, lng], { icon: drizzle }).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
             `).addTo(weatherOverlay)
         }
 
-        if (area.forecast == 'Showers' || area.forecast == 'Moderate Rain'){
-            L.marker([lat,lng],{icon:showers}).bindPopup(`
+        if (area.forecast == 'Showers' || area.forecast == 'Moderate Rain') {
+            L.marker([lat, lng], { icon: showers }).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
             `).addTo(weatherOverlay)
         }
 
-        if (area.forecast == 'Thundery Showers' || area.forecast == 'Heavy Thundery Showers'){
-            L.marker([lat,lng],{icon:thunder}).bindPopup(`
+        if (area.forecast == 'Thundery Showers' || area.forecast == 'Heavy Thundery Showers') {
+            L.marker([lat, lng], { icon: thunder }).bindPopup(`
             <h4>${area.name}</h4>
             <p>${area.forecast}</p>
             `).addTo(weatherOverlay)
         }
-
-        // create eventlistener for weather
-        document.querySelector("#weather-toggle").addEventListener('click', function(){
-            if (map.hasLayer(weatherOverlay)) {
-                map.removeLayer(weatherOverlay);
-            }
-            else {
-                weatherOverlay.addTo(map);
-            }
-        })
-
     }
-   
 
+    // create eventlistener for weather
+    document.querySelector("#weather-toggle").addEventListener('click', function () {
+        if (map.hasLayer(weatherOverlay)) {
+            map.removeLayer(weatherOverlay);
+        }
+        else {
+            weatherOverlay.addTo(map);
+        }
+    })
 }
-
-main();
 
 let map1 = document.querySelector('#map-container');
 let landingPage = document.querySelector('#home');
-document.querySelector('#btn-attraction-search').addEventListener('click', function(){
-    // landingPage.style.display = 'none';
+document.querySelector('#btn-attraction-search2').addEventListener('click', function () {
+    console.log('click');
+    landingPage.style.display = 'none';
     map1.className = '';
 })
+
+main();
+

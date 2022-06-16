@@ -4,23 +4,30 @@ const API_KEY = 'fsq3QDlVAvdvODCl95JV6QMgINC/ZJNmV/w5t0nTeL7WTxw=';
 const WEATHER_API_URL = 'https://api.data.gov.sg/v1/environment/2-hour-weather-forecast';
 
 
-// foursquare search query
-async function search(lat, lng, query) {
+// foursquare show nearby
+async function showNearby(lat, lng) {
     // create the coordinate
     let ll = lat + "," + lng;
     let response = await axios.get(BASE_API_URL,{
         'params': {
             'll': ll,
-            'query': query,
+            'category': 13000,
             'radius': 2000,
-            'limit': 50
         },
         'headers': {
             'Accept': 'application/json',
             'Authorization': API_KEY
         }
+    });
+    let nearbyFood = response.data.results;
+    nearbyFood = nearbyFood.map(food => {
+        return {
+            'name': food.name,
+            'coordinates': [food.geocodes.main.latitude, food.geocodes.main.longitude],
+            'distance': food.distance
+        }
     })
-    return response.data;
+    return nearbyFood;
 }
 
 async function weather() {

@@ -62,8 +62,8 @@
                     <p class="text-white text-shadow">EXPLORE THE TOURIST ATTRACTIONS IN SINGAPORE</p>
                     <div class="input-group">
                         <input class="form-control" type="text" placeholder="Search attraction e.g. gardens by the bay"
-                            id="attraction-search">
-                        <button id="btn-attraction-search" class="btn btn-primary" type="button"><i
+                            id="attraction-search2">
+                        <button id="btn-attraction-search2" class="btn btn-primary" type="button"><i
                                 class="fa fa-search"></i></button>
                     </div>
                 </div>
@@ -81,8 +81,8 @@
                 </div>
             </div>
             <div class="input-group d-flex gap-2 align-items-center mt-2">
-                <input class="form-control" placeholder="e.g. john@gmail.com">
-                <button class="btn btn-primary">Notify Me</button>
+                <input id="txt-email" class="form-control" placeholder="e.g. john@gmail.com">
+                <button id="email-submit" class="btn btn-primary">Notify Me</button>
             </div>
         </div>
     </div>
@@ -112,9 +112,11 @@
     <div id="map-container" class="">
         <div id="map" class="d-block"></div>
         <div id="search-container">
-            <input id="nearby-search" type="text" />
-            <button id="btn-nearby-search">Search</button>
-            <div id="results"></div>
+            <input id="attraction-search" type="text" />
+            <button id="btn-attraction-search">Search</button>
+            <div id="results">
+                <ul id="results-header"></ul>
+            </div>
         </div>
         <div>
             <button id="weather-toggle" class="btn btn-outline-primary">Weather Forecast <i
