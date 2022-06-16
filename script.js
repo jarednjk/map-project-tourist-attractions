@@ -36,12 +36,22 @@ async function main() {
 
  // email
 
-    // document.querySelector('#email-submit').addEventListener('click', function(){
-    //     let isEmailInvalid = false;
-    //     let email = document.querySelector('#txt-email').value;
+    document.querySelector('#email-submit').addEventListener('click', function(){
+        let isEmailInvalid = false;
+        let email = document.querySelector('#txt-email').value;
 
-    //     if (!email.includes)
-    // })
+        if (!email.includes('@') || !email.includes('.')) {
+            isEmailInvalid = true;
+        }
+
+        if (isEmailInvalid) {
+            document.querySelector('#txtEmailError').innerHTML = `<small>Please enter a valid email</small>`;
+            document.querySelector('#txtEmailError').style.color = "red";
+        }
+        else {
+            document.querySelector('#txtEmailError').innerHTML = "";   
+        }
+    })
 
     let attractionResponse = await axios.get('data/tourism.geojson');
 
@@ -94,7 +104,7 @@ async function main() {
                     
                     // flyto coordinates
                     document.querySelector(`#attraction-${i}`).addEventListener('click', function(){
-                        map.flyTo(filteredAttractions[i].coordinates , 16)
+                        map.flyTo(filteredAttractions[i].coordinates , 16).openPopup();
                     })
                 }
             } 
@@ -110,6 +120,7 @@ async function main() {
         let lng = attraction.properties.Longtitude;
         // create img
         let photo = attraction.properties['PHOTOURL'].split('"')[3];
+        let m = L.marker
 
         // culture overlay
         if (attraction.properties['PHOTOURL'].includes('culture') || attraction.properties['PHOTOURL'].includes('places-to-see')) {
@@ -161,6 +172,19 @@ async function main() {
 
         // nature overlay
         else if (attraction.properties['PHOTOURL'].includes('nature')) {
+            // m([lat, lng], { icon: natureIcon, autoPanOnFocus: true }).bindPopup(`
+            // <h4>${attraction.properties.Name}</h4>
+            // <img class='img-fluid' src="${photo}">
+            // <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
+            // <p><strong>Opening Hours:</strong> ${attraction.properties['Opening Hours']}</p>
+            // <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            // `).addTo(natureMarker);
+            // natureMarker.addTo(natureGroup);
+
+            // m.addEventListener('click', async function(){
+            //     map.flyTo([lat,lng], 16);
+            //     m.openPopup();
+            // })
             L.marker([lat, lng], { icon: natureIcon, autoPanOnFocus: true }).bindPopup(`
             <h4>${attraction.properties.Name}</h4>
             <img class='img-fluid' src="${photo}">
@@ -195,6 +219,8 @@ async function main() {
     }
 
     L.control.layers({}, overlays).addTo(map);
+    
+    let searchResultLayer = 
 
     cultureGroup.addTo(map);
     artsGroup.addTo(map);
