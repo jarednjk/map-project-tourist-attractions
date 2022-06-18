@@ -99,20 +99,15 @@ async function main() {
                     // let marker = L.marker(filteredAttractions[i].coordinates);
                     // marker.bindPopup(`<h4>${filteredAttractions[i].name}</h4>`)
                     // marker.addTo(map);
-                    // key-value pair
-                    // 1st step: to create json file
-                    // key: search string results, value: marker
 
                     let searchResults = document.createElement('li');
-                    // searchResults.style.listStyleType = 'none';
+                    searchResults.style.listStyleType = 'none';
                     document.querySelector('#results-header').appendChild(searchResults);
                     searchResults.id = 'attraction-' + i
                     searchResults.innerHTML = `${filteredAttractions[i].name}`;
                     
                     // flyto coordinates
                     document.querySelector(`#attraction-${i}`).addEventListener('click', function(){
-                        let marker = L.marker(filteredAttractions[i].coordinates);
-                        console.log(marker);
                         map.flyTo(filteredAttractions[i].coordinates , 16)
                         marker.openPopup();
                     })
@@ -133,48 +128,28 @@ async function main() {
         // create img
         let photo = attraction.properties['PHOTOURL'].split('"')[3];
 
-        
-
         // culture overlay
         if (attraction.properties['PHOTOURL'].includes('culture') || attraction.properties['PHOTOURL'].includes('places-to-see')) {
-            console.log(attraction)
             let marker = L.marker([lat, lng], { icon: cultureIcon}).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="food-nearby btn btn-danger btn-sm">Show Nearby</button>
             `).addTo(cultureMarker);
             cultureMarker.addTo(cultureGroup);
-
-            // document.querySelector(`#${attraction.properties.INC_CRC}`).addEventListener('click', function(){
-            //     alert('hello');
-            // })
-
-            // lat = +lat + 0.002
-            // console.log(lat);
-            // console.log(typeof(lat));
-            // console.log(typeof(lng));
-        
             marker.addEventListener('click', function(){
                 map.flyTo([lat,lng], 16);
-                // marker.openPopup();
+                marker.openPopup();
             })
-
-            // document.getElementById(attraction.INC_CRC).addEventListener('click', function(){
-            //     showNearby(lat,lng);
-            //     console.log(showNearby(lat,lng))
-            //     // showNearby(lat, lng)
-            // })
         }
 
         // recreation overlay
         else if (attraction.properties['PHOTOURL'].includes('recreation')) {
             let marker = L.marker([lat, lng], { icon: recreationIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(recreationMarker);
             recreationMarker.addTo(recreationGroup);
             marker.addEventListener('click', function(){
@@ -187,9 +162,9 @@ async function main() {
         else if (attraction.properties['PHOTOURL'].includes('arts')) {
             let marker = L.marker([lat, lng], { icon: artsIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(artsMarker);
             artsMarker.addTo(artsGroup);
             marker.addEventListener('click', function(){
@@ -202,9 +177,9 @@ async function main() {
         else if (attraction.properties['PHOTOURL'].includes('history')) {
             let marker = L.marker([lat, lng], { icon: historyIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(historyMarker);
             historyMarker.addTo(historyGroup);
             marker.addEventListener('click', function(){
@@ -217,9 +192,9 @@ async function main() {
         else if (attraction.properties['PHOTOURL'].includes('nature')) {
             let marker = L.marker([lat, lng], { icon: natureIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(natureMarker);
             natureMarker.addTo(natureGroup);
             marker.addEventListener('click', function(){
@@ -232,9 +207,9 @@ async function main() {
         else if (attraction.properties['PHOTOURL'].includes('architecture')) {
             let marker = L.marker([lat, lng], { icon: architectureIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(architectureMarker);
             architectureMarker.addTo(architectureGroup);
             marker.addEventListener('click', function(){
@@ -242,7 +217,6 @@ async function main() {
                 marker.openPopup();
             })
         }
- 
     }
 
     // add the overlays to checkboxes
@@ -350,21 +324,22 @@ async function main() {
             weatherOverlay.addTo(map);
         }
     })
-
-   
 }
 
-let mapContainer = document.querySelector('#map-container');
+let map1 = document.querySelector('#map-container');
 let landingPage = document.querySelector('#home');
 document.querySelector('#btn-attraction-search2').addEventListener('click', function () {
-    landingPage.classList.add('hidden');
-    // mapContainer.classList.remove('hidden');
-    mapContainer.classList.add('show');
+    landingPage.style.display = 'none';
+    map1.classList.remove('d-none');
+    map1.style.display = 'block';
+    // map.remove();
+    // initMap();
+    
 })
 
 document.querySelector('#logo').addEventListener('click', function(){
-    landingPage.classList.add('show');
-    mapContainer.classList.add('hidden');
+    map1.style.display = 'none';
+    landingPage.style.display = 'display';
 })
 
 

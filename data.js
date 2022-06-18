@@ -6,12 +6,13 @@ const WEATHER_API_URL = 'https://api.data.gov.sg/v1/environment/2-hour-weather-f
 
 // foursquare show nearby
 async function showNearby(lat, lng) {
+    let restaurantGroup = L.layerGroup();
     // create the coordinate
     let ll = lat + "," + lng;
     let response = await axios.get(BASE_API_URL,{
         'params': {
             'll': ll,
-            'category': 13000,
+            'category': 13065,
             'radius': 2000,
         },
         'headers': {
@@ -20,15 +21,30 @@ async function showNearby(lat, lng) {
         }
     });
     let nearbyFood = response.data.results;
-    nearbyFood = nearbyFood.map(food => {
-        return {
-            'name': food.name,
-            'coordinates': [food.geocodes.main.latitude, food.geocodes.main.longitude],
-            'distance': food.distance
-        }
-    })
-    return nearbyFood;
+    // nearbyFood = nearbyFood.map(food => {
+    //     return {
+    //         'name': food.name,
+    //         'coordinates': [food.geocodes.main.latitude, food.geocodes.main.longitude],
+    //         'distance': food.distance
+    //     }
+    // })
+    for (let f of nearbyFood) {
+        let marker = L.marker([f.geocodes.main.latitude, f.geocodes.main.longitude]).bindPopup(`
+        <strong>Restaurant:</strong> ${f.name}<br>
+        <strong>Distance:</strong> ${f.distance}m away
+        `).addTo(restaurantGroup);
+        console.log(f.name);
+        // return marker;
+    }
+    restaurantGroup.addTo(map);
+    // return marker;
+    // plot markers of nearby food
 }
+
+// (async function() {
+//     let result = await showNearby(1.3521, 103.8198);
+//     console.log(result);
+//   })();
 
 async function weather() {
     let response = await axios.get(WEATHER_API_URL);
