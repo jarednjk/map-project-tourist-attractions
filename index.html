@@ -55,18 +55,15 @@
                     </div>
     
                 </div>
-                <div id="search-box" class="d-flex align-items-center justify-content-center pb-5">
+                <div id="search-box" class="d-flex align-items-center justify-content-center">
                     <div class="text-center">
                         <img src="img/attraction/singapore.png" width="130" class="text-shadow">
                         <div class="mt-3">
                             <h1 class="text-white text-shadow">Unsure Where To Go?</h1>
                             <p class="text-white text-shadow">EXPLORE THE TOURIST ATTRACTIONS IN SINGAPORE</p>
-                            <div class="input-group">
-                                <input class="form-control" type="text"
-                                    placeholder="Search attraction e.g. gardens by the bay" id="attraction-search2">
-                                <button id="btn-attraction-search2" class="btn btn-danger"><i
-                                        class="fa fa-search"></i></button>
-                            </div>
+                                <!-- <input class="form-control" type="text"
+                                    placeholder="Search attraction e.g. gardens by the bay" id="attraction-search2"> -->
+                                <button id="btn-attraction-search2" class="btn btn-danger btn-lg">Get Started <small><i class="fa fa-search"></i></small></button>
                         </div>
                     </div>
                     <!-- subscribe to email -->
@@ -103,7 +100,7 @@
                 <div id="search-container" class="rounded-3">
                     <div class="input-group">
                         <input type="text" class="form-control" id="attraction-search"
-                            placeholder="Search attraction e.g. Chek Jawa">
+                            placeholder="Search attraction e.g. Sentosa">
                         <button id="btn-attraction-search" class="ms-0 btn btn-danger"><i class="fa fa-search"></i></button>
                     </div>
                     <div id="results">
@@ -111,7 +108,11 @@
                     </div>
                 </div>
                 <div>
-                    <button id="weather-toggle" class="btn btn-outline-danger">Weather Forecast <i
+                    <button id="weather-toggle-sm" class="d-block d-md-none btn btn-dark"><i
+                            class="fa-solid fa-cloud-sun"></i></button>
+                </div>
+                <div>
+                    <button id="weather-toggle-lg" class="d-none d-md-block btn btn-dark">Check Weather <i
                             class="fa-solid fa-cloud-sun"></i></button>
                 </div>
             </div>

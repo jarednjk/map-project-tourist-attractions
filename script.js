@@ -14,8 +14,8 @@ function initMap() {
 
     function onLocationFound(e) {
         var radius = e.accuracy;
-        L.marker(e.latlng, { icon: currentLocationIcon }).addTo(map).bindPopup(`<h4>YOU ARE HERE</h4>`).openPopup();
-        L.circle(e.latlng, 2000).addTo(map);
+        L.marker(e.latlng, { icon: currentLocationIcon }).addTo(map).bindPopup(`<h5>You Are Here</h5>`).openPopup();
+        // L.circle(e.latlng, 2000).addTo(map);
     }
 
     map.on('locationfound', onLocationFound);
@@ -26,8 +26,6 @@ function initMap() {
     map.on('locationerror', onLocationError);
     return map;
 }
-
-
 
 let map = initMap();
 
@@ -104,6 +102,7 @@ async function main() {
                     // key: search string results, value: marker
 
                     let searchResults = document.createElement('li');
+                    searchResults.className = "search-result";
                     // searchResults.style.listStyleType = 'none';
                     document.querySelector('#results-header').appendChild(searchResults);
                     searchResults.id = 'attraction-' + i
@@ -151,20 +150,13 @@ async function main() {
         
             marker.addEventListener('click', function(){
                 map.flyTo([lat,lng], 16);
-                if (map.hasLayer(foodGroup)) {
-                    map.removeLayer(foodGroup);
-                }
-                else {
-                    foodGroup.addTo(map);
-                }
-                // marker.openPopup();
+                // if (map.hasLayer(foodGroup)) {
+                //     map.removeLayer(foodGroup);
+                // }
+                // else {
+                //     foodGroup.addTo(map);
+                // }
             })
-
-            // document.getElementById(attraction.INC_CRC).addEventListener('click', function(){
-            //     showNearby(lat,lng);
-            //     console.log(showNearby(lat,lng))
-            //     // showNearby(lat, lng)
-            // })
         }
 
         // recreation overlay
@@ -174,7 +166,11 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
             `).addTo(recreationMarker);
+
+            lat = +lat + 0.002
+
             recreationMarker.addTo(recreationGroup);
             marker.addEventListener('click', function(){
                 map.flyTo([lat,lng], 16);
@@ -189,8 +185,12 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
             `).addTo(artsMarker);
             artsMarker.addTo(artsGroup);
+
+            lat = +lat + 0.002
+
             marker.addEventListener('click', function(){
                 map.flyTo([lat,lng], 16);
                 marker.openPopup();
@@ -204,8 +204,12 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
             `).addTo(historyMarker);
             historyMarker.addTo(historyGroup);
+
+            lat = +lat + 0.002
+
             marker.addEventListener('click', function(){
                 map.flyTo([lat,lng], 16);
                 marker.openPopup();
@@ -219,8 +223,12 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
             `).addTo(natureMarker);
             natureMarker.addTo(natureGroup);
+
+            lat = +lat + 0.002
+
             marker.addEventListener('click', function(){
                 map.flyTo([lat,lng], 16);
                 marker.openPopup();
@@ -234,8 +242,12 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
             `).addTo(architectureMarker);
             architectureMarker.addTo(architectureGroup);
+
+            lat = +lat + 0.002
+
             marker.addEventListener('click', function(){
                 map.flyTo([lat,lng], 16);
                 marker.openPopup();
@@ -341,7 +353,16 @@ async function main() {
     }
 
     // create eventlistener for weather
-    document.querySelector("#weather-toggle").addEventListener('click', function () {
+    document.querySelector("#weather-toggle-sm").addEventListener('click', function () {
+        if (map.hasLayer(weatherOverlay)) {
+            map.removeLayer(weatherOverlay);
+        }
+        else {
+            weatherOverlay.addTo(map);
+        }
+    })
+
+    document.querySelector("#weather-toggle-lg").addEventListener('click', function () {
         if (map.hasLayer(weatherOverlay)) {
             map.removeLayer(weatherOverlay);
         }

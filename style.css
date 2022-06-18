@@ -25,41 +25,38 @@
 #search-container {
     position: absolute;
     z-index: 314159;
-    min-width: 311px;
-    max-width: 311px;
-    /* min-height: 10px; */
-    /* top: 11px; */
-    bottom: 27px;
-    left: 10px;
+    min-width: 350px;
+    max-width: 350px;
+    bottom: 38px;
+    
     background-color: rgba(255,255,255,0.8);
-    /* padding: 0px 0px 0px 10px; */
-    /* display: none; */
-    padding-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
 
 #btn-attraction-search {
     margin-left: 10px;
 }
 
-#weather-toggle {
-    /* font-size: 22px; */
+#weather-toggle-sm {
     position: absolute;
     z-index: 314159;
-    bottom: 27px;
-    right: 10px;
+    width: 50px;
+    top: 11px;
+    left: 146px;
+    font-size: 21px;
 }
 
-.input-group {
-    /* width: 400px; */
+#weather-toggle-lg {
+    position: absolute;
+    z-index: 314159;
+    top: 11px;
+    left: 146px;
 }
 
 #home {
-    /* height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat; 
-    background-color:#999; 
-    background-blend-mode: multiply;
-    transition: all .2s ease; */
     position: relative;
 }
 
@@ -70,8 +67,12 @@
 #email-subscribe {
     position: absolute;
     bottom: 25px;
-    right: 25px;
+    right: 0px;
+    left: 0px;
+    margin-left: auto;
+    margin-right: auto;
     height: 150px;
+    width: 400px;
 }
 
 #search-box {
@@ -104,7 +105,12 @@ ul {
     z-index: 314159;
     width: 61px;
     top: -5px;
-    left: 55px;
+    left: 65px;
+    /* position: absolute;
+    z-index: 314159;
+    width: 61px;
+    top: 80px;
+    left: 4px; */
 }
 
 ul:empty {
@@ -113,10 +119,38 @@ ul:empty {
 
 #results {
     overflow-y: scroll;
-    max-height: 200px;
+    max-height: 190px;
     padding-left: 10px;
+}
+
+.search-result {
+    cursor: pointer;
 }
 
 .hidden {
     transform: translateY(-100%);
+}
+
+@media (min-width: 768px) {
+    #results {
+        max-height: 220px;
+    }
+
+    #search-container {
+        min-width: 303px;
+        max-width: 303px;
+        bottom: 10px;
+        margin-left: 0;
+        left: 10px;
+    }
+
+    #email-subscribe {
+        position: absolute;
+        bottom: 25px;
+        right: 25px;
+        left: auto;
+        height: 150px;
+    }
+    
+
 }
