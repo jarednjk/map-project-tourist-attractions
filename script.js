@@ -143,21 +143,20 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="food-nearby btn btn-danger btn-sm">Show Nearby</button>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
             `).addTo(cultureMarker);
             cultureMarker.addTo(cultureGroup);
 
-            // document.querySelector(`#${attraction.properties.INC_CRC}`).addEventListener('click', function(){
-            //     alert('hello');
-            // })
-
-            // lat = +lat + 0.002
-            // console.log(lat);
-            // console.log(typeof(lat));
-            // console.log(typeof(lng));
+            lat = +lat + 0.002
         
             marker.addEventListener('click', function(){
                 map.flyTo([lat,lng], 16);
+                if (map.hasLayer(foodGroup)) {
+                    map.removeLayer(foodGroup);
+                }
+                else {
+                    foodGroup.addTo(map);
+                }
                 // marker.openPopup();
             })
 
@@ -170,11 +169,11 @@ async function main() {
 
         // recreation overlay
         else if (attraction.properties['PHOTOURL'].includes('recreation')) {
-            let marker = L.marker([lat, lng], { icon: recreationIcon, autoPanOnFocus: true }).bindPopup(`
+            let marker = L.marker([lat, lng], { icon: recreationIcon}).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(recreationMarker);
             recreationMarker.addTo(recreationGroup);
             marker.addEventListener('click', function(){
@@ -187,9 +186,9 @@ async function main() {
         else if (attraction.properties['PHOTOURL'].includes('arts')) {
             let marker = L.marker([lat, lng], { icon: artsIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(artsMarker);
             artsMarker.addTo(artsGroup);
             marker.addEventListener('click', function(){
@@ -202,9 +201,9 @@ async function main() {
         else if (attraction.properties['PHOTOURL'].includes('history')) {
             let marker = L.marker([lat, lng], { icon: historyIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(historyMarker);
             historyMarker.addTo(historyGroup);
             marker.addEventListener('click', function(){
@@ -217,9 +216,9 @@ async function main() {
         else if (attraction.properties['PHOTOURL'].includes('nature')) {
             let marker = L.marker([lat, lng], { icon: natureIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(natureMarker);
             natureMarker.addTo(natureGroup);
             marker.addEventListener('click', function(){
@@ -232,9 +231,9 @@ async function main() {
         else if (attraction.properties['PHOTOURL'].includes('architecture')) {
             let marker = L.marker([lat, lng], { icon: architectureIcon, autoPanOnFocus: true }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
+            <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <img class='img-fluid' src="${photo}">
             `).addTo(architectureMarker);
             architectureMarker.addTo(architectureGroup);
             marker.addEventListener('click', function(){
@@ -354,17 +353,17 @@ async function main() {
    
 }
 
-let mapContainer = document.querySelector('#map-container');
-let landingPage = document.querySelector('#home');
+let mapDiv = document.querySelector('#mapDiv');
+let homeDiv = document.querySelector('#homeDiv');
 document.querySelector('#btn-attraction-search2').addEventListener('click', function () {
-    landingPage.classList.add('hidden');
+    homeDiv.classList.add('hidden');
     // mapContainer.classList.remove('hidden');
-    mapContainer.classList.add('show');
+    mapDiv.classList.remove('hidden');
 })
 
 document.querySelector('#logo').addEventListener('click', function(){
-    landingPage.classList.add('show');
-    mapContainer.classList.add('hidden');
+    homeDiv.classList.remove('hidden');
+    mapDiv.classList.remove('hidden');
 })
 
 

@@ -1,3 +1,14 @@
+#main {
+    position: relative;
+    height: 100vh;
+}
+
+#homeDiv, #mapDiv {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
 #map {
     height: 100vh;
 }
@@ -107,11 +118,5 @@ ul:empty {
 }
 
 .hidden {
-    transform: translateX(-100%);
-    /* transition: transform 1s; */
-}
-
-.show {
     transform: translateY(-100%);
-    transition: transform 0s;
 }

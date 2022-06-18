@@ -49,6 +49,11 @@ let recreationIcon = L.icon ({
     // popupAnchor: [0, -25],
 });
 
+let foodIcon = L.icon ({
+    iconUrl: 'img/attraction/restaurant.png',
+    iconSize: [30, 30],
+})
+
 // weather icon
 
 let sunny = L.icon({
