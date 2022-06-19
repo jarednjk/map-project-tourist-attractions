@@ -13,10 +13,11 @@
     height: 100vh;
 }
 
-.carousel-item {
-    height: 100vh;
-    /* min-height: 350px; */
-  }
+.carousel-item img {
+      object-fit: cover;
+      object-position: center;
+      height: 100vh;
+}
 
 #map-container {
     position: relative;
@@ -117,10 +118,20 @@ ul:empty {
     display: none;
 }
 
+#results-header li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: -10px;
+    padding-left: 14px;
+}
+
+#results-header li:hover {
+    background: #c0bbbb;
+}
+
 #results {
     overflow-y: scroll;
     max-height: 190px;
-    padding-left: 10px;
 }
 
 .search-result {
@@ -131,7 +142,7 @@ ul:empty {
     transform: translateY(-100%);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px){
     #results {
         max-height: 220px;
     }

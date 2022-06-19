@@ -94,16 +94,10 @@ async function main() {
         } else {
             if (filteredAttractions.length >= 1) {
                 for (let i=0; i<filteredAttractions.length; i++) {
-                    // let marker = L.marker(filteredAttractions[i].coordinates);
-                    // marker.bindPopup(`<h4>${filteredAttractions[i].name}</h4>`)
-                    // marker.addTo(map);
-                    // key-value pair
-                    // 1st step: to create json file
-                    // key: search string results, value: marker
 
                     let searchResults = document.createElement('li');
                     searchResults.className = "search-result";
-                    // searchResults.style.listStyleType = 'none';
+                    searchResults.style.listStyleType = 'none';
                     document.querySelector('#results-header').appendChild(searchResults);
                     searchResults.id = 'attraction-' + i
                     searchResults.innerHTML = `${filteredAttractions[i].name}`;
@@ -142,7 +136,7 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby Food</button>
             `).addTo(cultureMarker);
             cultureMarker.addTo(cultureGroup);
 
@@ -166,7 +160,7 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby Food</button>
             `).addTo(recreationMarker);
 
             lat = +lat + 0.002
@@ -185,7 +179,7 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby Food</button>
             `).addTo(artsMarker);
             artsMarker.addTo(artsGroup);
 
@@ -204,7 +198,7 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby Food</button>
             `).addTo(historyMarker);
             historyMarker.addTo(historyGroup);
 
@@ -223,7 +217,7 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby Food</button>
             `).addTo(natureMarker);
             natureMarker.addTo(natureGroup);
 
@@ -242,7 +236,7 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby</button>
+            <button onclick='showNearby(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Show Nearby Food</button>
             `).addTo(architectureMarker);
             architectureMarker.addTo(architectureGroup);
 
