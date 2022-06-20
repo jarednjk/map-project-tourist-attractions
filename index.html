@@ -15,8 +15,9 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- CSS only -->
     <link rel="stylesheet" href="style.css">
     <title>SG Tourist Attractions</title>
 </head>
@@ -24,33 +25,33 @@
 <body>
     <div id="main">
         <!-- LANDING PAGE -->
-        <div id="homeDiv">
-            <div id="home" class="">
+        <div id="landingPageDiv">
+            <div id="landingPage" class="">
                 <div id="carouselExampleSlidesOnly" class=" carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active drk">
-                            <img src="img/screensaver/attraction1.jpeg" class="d-block w-100" alt="...">
+                            <img src="img/screensaver/attraction1.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item drk">
-                            <img src="img/screensaver/attraction2.jpeg" class="d-block w-100" alt="...">
+                            <img src="img/screensaver/attraction2.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item drk">
-                            <img src="img/screensaver/attraction3.jpeg" class="d-block w-100" alt="...">
+                            <img src="img/screensaver/attraction3.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item drk">
-                            <img src="img/screensaver/attraction4.jpeg" class="d-block w-100" alt="...">
+                            <img src="img/screensaver/attraction4.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item drk">
-                            <img src="img/screensaver/attraction5.jpeg" class="d-block w-100" alt="...">
+                            <img src="img/screensaver/attraction5.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item drk">
-                            <img src="img/screensaver/attraction6.jpeg" class="d-block w-100" alt="...">
+                            <img src="img/screensaver/attraction6.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item drk">
-                            <img src="img/screensaver/attraction7.jpeg" class="d-block w-100" alt="...">
+                            <img src="img/screensaver/attraction7.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item drk">
-                            <img src="img/screensaver/attraction8.jpeg" class="d-block w-100" alt="...">
+                            <img src="img/screensaver/attraction8.jpg" class="d-block w-100" alt="...">
                         </div>
                     </div>
                 </div>
@@ -61,13 +62,14 @@
                         <div class="mt-3">
                             <h1 class="text-white text-shadow">Unsure Where To Go?</h1>
                             <p class="text-white text-shadow">EXPLORE THE TOURIST ATTRACTIONS IN SINGAPORE</p>
-                                <!-- <input class="form-control" type="text"
+                            <!-- <input class="form-control" type="text"
                                     placeholder="Search attraction e.g. gardens by the bay" id="attraction-search2"> -->
-                                <button id="btn-attraction-search2" class="btn btn-danger btn-lg">Get Started <small><i class="fa fa-search"></i></small></button>
+                            <button id="btn-get-started" class="btn btn-danger btn-lg">Get Started <small><i
+                                        class="fa fa-search"></i></small></button>
                         </div>
                     </div>
                     <!-- subscribe to email -->
-    
+
                 </div>
                 <div id="email-subscribe" class="card p-4">
                     <div class="d-flex flex-row">
@@ -86,7 +88,7 @@
                 </div>
             </div>
         </div>
-    
+
 
         <!-- MAP -->
         <div id="mapDiv" class="hidden">
@@ -101,7 +103,8 @@
                     <div class="input-group">
                         <input type="text" class="form-control" id="attraction-search"
                             placeholder="Search attraction e.g. Sentosa">
-                        <button id="btn-attraction-search" class="ms-0 btn btn-danger"><i class="fa fa-search"></i></button>
+                        <button id="btn-attraction-search" class="ms-0 btn btn-danger"><i
+                                class="fa fa-search"></i></button>
                     </div>
                     <div id="results">
                         <ul id="results-header"></ul>
@@ -115,9 +118,65 @@
                     <button id="weather-toggle-lg" class="d-none d-md-block btn btn-dark">Check Weather <i
                             class="fa-solid fa-cloud-sun"></i></button>
                 </div>
+
+                <!-- info tab -->
+                <!-- <div id="info-tab">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                                aria-selected="true">Search <i class="fa fa-search"></i></button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#profile-tab-pane" type="button" role="tab"
+                                aria-controls="profile-tab-pane" aria-selected="false">Explore <i
+                                    class="fa-solid fa-filter"></i></button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                                data-bs-target="#contact-tab-pane" type="button" role="tab"
+                                aria-controls="contact-tab-pane" aria-selected="false">Weather <i
+                                    class="fa-solid fa-cloud-sun"></i></button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                                data-bs-target="#contact-tab-pane" type="button" role="tab"
+                                aria-controls="contact-tab-pane" aria-selected="false"><i
+                                    class="fa-solid fa-caret-down"></i></button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+                            aria-labelledby="home-tab" tabindex="0">
+                            <div class="row mx-0 bg-light" id="search-bar-wrapper">
+                                <div class="col p-2 bg-light">
+                                    <div id="search-container" class="rounded-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="attraction-search"
+                                                placeholder="Search attraction e.g. Sentosa">
+                                            <button id="btn-attraction-search" class="ms-0 btn btn-danger"><i
+                                                    class="fa fa-search"></i></button>
+                                        </div>
+                                        <div id="results" class="bg-light">
+                                            <ul id="results-header"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                            
+                           
+                        </div>
+                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                            tabindex="0">...</div>
+                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                            tabindex="0">...</div>
+                    </div>
+                </div> -->
             </div>
         </div>
-        
+
 
     </div>
 
@@ -134,8 +193,9 @@
     <!-- marker cluster-->
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <!-- our own script -->
     <script src="icon.js"></script>

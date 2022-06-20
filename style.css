@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif; 
+}
+
 #main {
     position: relative;
     height: 100vh;
 }
 
-#homeDiv, #mapDiv {
+#landingPageDiv, #mapDiv {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -37,6 +43,18 @@
     right: 0;
 }
 
+/* .bg-light {
+    background-color: red;
+} */
+
+#info-tab {
+    position: absolute;
+    z-index: 314159;
+    width: 371px;
+    height: 342px;
+    bottom: 0px;
+}
+
 #btn-attraction-search {
     margin-left: 10px;
 }
@@ -57,7 +75,7 @@
     left: 146px;
 }
 
-#home {
+#landingPage {
     position: relative;
 }
 
@@ -73,7 +91,7 @@
     margin-left: auto;
     margin-right: auto;
     height: 150px;
-    width: 400px;
+    width: 392px;
 }
 
 #search-box {
@@ -107,11 +125,14 @@ ul {
     width: 61px;
     top: -5px;
     left: 65px;
-    /* position: absolute;
-    z-index: 314159;
-    width: 61px;
-    top: 80px;
-    left: 4px; */
+}
+
+#search-bar-wrapper {
+    background-color: white;
+}
+
+.col {
+    height: 300px;
 }
 
 ul:empty {
@@ -119,8 +140,8 @@ ul:empty {
 }
 
 #results-header li {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     margin-left: -10px;
     padding-left: 14px;
 }
@@ -148,8 +169,8 @@ ul:empty {
     }
 
     #search-container {
-        min-width: 303px;
-        max-width: 303px;
+        min-width: 300px;
+        max-width: 300px;
         bottom: 10px;
         margin-left: 0;
         left: 10px;
