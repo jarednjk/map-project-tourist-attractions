@@ -3,7 +3,7 @@ let map = initMap();
 
 async function main() {
 
-    // email
+    // email condition
     document.querySelector('#email-submit').addEventListener('click', function () {
         let isEmailInvalid = false;
         let email = document.querySelector('#txt-email').value;
@@ -269,4 +269,3 @@ document.querySelector('#logo').addEventListener('click', function () {
     landingPageDiv.classList.remove('hidden');
     mapDiv.classList.remove('hidden');
 })
-

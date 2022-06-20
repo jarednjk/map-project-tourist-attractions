@@ -68,10 +68,10 @@
                                         class="fa fa-search"></i></small></button>
                         </div>
                     </div>
-                    <!-- subscribe to email -->
-
                 </div>
-                <div id="email-subscribe" class="card p-4">
+
+                <!-- subscribe to email form -->
+                <form id="email-subscribe" class="card p-4">
                     <div class="d-flex flex-row">
                         <div class="d-flex flex-column">
                             <h5 class="mb-0">Get access to exclusive tourism deals</h5>
@@ -81,11 +81,14 @@
                         </div>
                     </div>
                     <div class="input-group d-flex gap-2 align-items-center mt-2">
-                        <input id="txt-email" class="form-control" placeholder="e.g. john@gmail.com">
+                        <input id="txt-name" class="form-control" placeholder="Name" required>
+                        <input id="txt-email" class="form-control" placeholder="Email Address">
                         <button id="email-submit" class="btn btn-danger">Notify Me</button>
                     </div>
-                    <div class="error" id="txtEmailError"></div>
-                </div>
+                    <div id="txtEmailError" class="mx-auto ps-5"></div>
+                </form>
+
+
             </div>
         </div>
 
