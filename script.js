@@ -108,9 +108,9 @@ async function main() {
                 <button onclick='showNearbyFood(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Nearby Eateries</button>
                 `).addTo(attractionMarker);
                 attractionMarker.addTo(attractionGroup);
-    
+
                 lat = +lat + 0.002
-    
+
                 marker.addEventListener('click', function () {
                     map.flyTo([lat, lng], 16);
                 })
@@ -169,69 +169,86 @@ async function main() {
     architectureGroup.addTo(map);
     recreationGroup.addTo(map);
 
-    // add the overlays to checkboxes
-    let overlays = {
-        'Culture': cultureGroup,
-        'Arts': artsGroup,
-        'History': historyGroup,
-        'Nature': natureGroup,
-        'Architecture': architectureGroup,
-        'Recreation': recreationGroup
+    function layerCheckbox(checkboxName, checkboxId, checkboxLayer) {
+        document.querySelector(`input[name=${checkboxName}]`).addEventListener('change', function() {
+            if (document.querySelector(`#${checkboxId}`).checked) {
+                map.addLayer(checkboxLayer);
+            }
+            else if (!document.querySelector(`#${checkboxId}`).checked) {
+                map.removeLayer(checkboxLayer);
+            }
+        })
     }
-    L.control.layers({}, overlays).addTo(map);
+
+    layerCheckbox('cultureName', 'cultureId', cultureGroup);
+    layerCheckbox('artsName', 'artsId', artsGroup);
+    layerCheckbox('historyName', 'historyId', historyGroup);
+    layerCheckbox('natureName', 'natureId', natureGroup);
+    layerCheckbox('architectureName', 'architectureId', architectureGroup);
+    layerCheckbox('recreationName', 'recreationId', recreationGroup);
+
+
+
+    // add the overlays to checkboxes
+    // let overlays = {
+    //     'Culture': cultureGroup,
+    //     'Arts': artsGroup,
+    //     'History': historyGroup,
+    //     'Nature': natureGroup,
+    //     'Architecture': architectureGroup,
+    //     'Recreation': recreationGroup
+    // }
+    // L.control.layers({}, overlays).addTo(map);
 
     // 24hr Weather API
     let dailyWeatherResponse = await axios.get(WEATHER_24HR_API_URL);
 
-    // function displayDailyWeather() {
-        let dailyWeatherForecast = dailyWeatherResponse.data.items[0].general.forecast;
-        let lowTemp = dailyWeatherResponse.data.items[0].general.temperature.low;
-        let highTemp = dailyWeatherResponse.data.items[0].general.temperature.high;
+    let dailyWeatherForecast = dailyWeatherResponse.data.items[0].general.forecast;
+    let lowTemp = dailyWeatherResponse.data.items[0].general.temperature.low;
+    let highTemp = dailyWeatherResponse.data.items[0].general.temperature.high;
 
-        if (dailyWeatherForecast == 'Fair & Warm' || dailyWeatherForecast == 'Fair (Day)') {
-            iconURL = "img/weather/sunny.png"
-        }
+    if (dailyWeatherForecast == 'Fair & Warm' || dailyWeatherForecast == 'Fair (Day)') {
+        iconURL = "img/weather/sunny.png"
+    }
 
-        else if (dailyWeatherForecast == 'Partly Cloudy (Day)') {
-            iconURL = "img/weather/cloudy-day.png"
-        }
+    else if (dailyWeatherForecast == 'Partly Cloudy (Day)') {
+        iconURL = "img/weather/cloudy-day.png"
+    }
 
-        else if (dailyWeatherForecast == 'Cloudy') {
-            iconURL = "img/weather/cloudy.png"
-        }
+    else if (dailyWeatherForecast == 'Cloudy') {
+        iconURL = "img/weather/cloudy.png"
+    }
 
-        else if (dailyWeatherForecast == 'Partly Cloudy (Night)') {
-            iconURL = "img/weather/cloudy-night.png"
-        }
+    else if (dailyWeatherForecast == 'Partly Cloudy (Night)') {
+        iconURL = "img/weather/cloudy-night.png"
+    }
 
-        else if (dailyWeatherForecast == 'Fair (Night)') {
-            iconURL = "img/weather/night.png"
-        }
+    else if (dailyWeatherForecast == 'Fair (Night)') {
+        iconURL = "img/weather/night.png"
+    }
 
-        else if (dailyWeatherForecast == 'Light Showers' || dailyWeatherForecast == 'Light Rain') {
-            iconURL = "img/weather/drizzle.png"
-        }
+    else if (dailyWeatherForecast == 'Light Showers' || dailyWeatherForecast == 'Light Rain') {
+        iconURL = "img/weather/drizzle.png"
+    }
 
-        else if (dailyWeatherForecast == 'Showers' || dailyWeatherForecast == 'Moderate Rain') {
-            iconURL = "img/weather/showers.png"
-        }
+    else if (dailyWeatherForecast == 'Showers' || dailyWeatherForecast == 'Moderate Rain') {
+        iconURL = "img/weather/showers.png"
+    }
 
-        else if (dailyWeatherForecast == 'Thundery Showers' || dailyWeatherForecast == 'Heavy Thundery Showers') {
-            iconURL = "img/weather/thunder.png"
-        }
+    else if (dailyWeatherForecast == 'Thundery Showers' || dailyWeatherForecast == 'Heavy Thundery Showers') {
+        iconURL = "img/weather/thunder.png"
+    }
 
-        let weatherText = `
+    let weatherText = `
             <h4><strong>24 Hours Forecast</strong></h4>
             <p>${dailyWeatherForecast}</p>
             <div class="pb-4"><img src="${iconURL}" style="width: 80px; height:80px"></div>
 
             <p><i class="fa-solid fa-temperature-low"></i> ${lowTemp} / ${highTemp} <i class="fa-solid fa-temperature-high"></i></p>
         `
-    //      return weatherText;
-    // }
 
     document.querySelector('#daily-weather-forecast').innerHTML = weatherText;
-    
+
 
 
     // 2hr Weather API
@@ -286,15 +303,7 @@ async function main() {
         }
     }
 
-    // create eventlistener for weather
-    // document.querySelector("#weather-toggle-sm").addEventListener('click', function () {
-    //     if (map.hasLayer(weatherOverlay)) {
-    //         map.removeLayer(weatherOverlay);
-    //     }
-    //     else {
-    //         weatherOverlay.addTo(map);
-    //     }
-    // })
+
 
     document.querySelector("#weather-toggle").addEventListener('click', function () {
         if (map.hasLayer(weatherOverlay)) {
@@ -314,7 +323,6 @@ let mapDiv = document.querySelector('#mapDiv');
 let landingPageDiv = document.querySelector('#landingPageDiv');
 document.querySelector('#btn-get-started').addEventListener('click', function () {
     landingPageDiv.classList.add('hidden');
-    // mapContainer.classList.remove('hidden');
     mapDiv.classList.remove('hidden');
 })
 
