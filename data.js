@@ -2,6 +2,7 @@ const BASE_API_URL = 'https://api.foursquare.com/v3/places/search';
 const API_KEY = 'fsq3QDlVAvdvODCl95JV6QMgINC/ZJNmV/w5t0nTeL7WTxw=';
 
 const WEATHER_API_URL = 'https://api.data.gov.sg/v1/environment/2-hour-weather-forecast';
+const WEATHER_24HR_API_URL = 'https://api.data.gov.sg/v1/environment/24-hour-weather-forecast';
 
 // Create map
 function initMap() {

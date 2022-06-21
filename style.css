@@ -30,17 +30,10 @@ body {
 }
 
 #search-container {
-    position: absolute;
-    z-index: 314159;
-    min-width: 350px;
-    max-width: 350px;
-    bottom: 38px;
+
     
-    background-color: rgba(255,255,255,0.8);
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+    background-color: rgba(145, 34, 34, 0.8);
+
 }
 
 /* .bg-light {
@@ -54,6 +47,26 @@ body {
     height: 342px;
     bottom: 0px;
 }
+
+.active {
+    background-color: #f7f7f7 !important;
+}
+
+#search-tab {
+    color: #d9534f;
+}
+
+#explore-tab {
+    color: #5cb85c;
+}
+
+#weather-tab {
+    color: #ee8532;
+}
+
+/* #attraction-search {
+    color: grey !important;
+} */
 
 #btn-attraction-search {
     margin-left: 10px;
@@ -131,8 +144,12 @@ ul {
     left: 65px;
 }
 
+.bg-white {
+    color: white;
+}
+
 #search-bar-wrapper {
-    background-color: white;
+    /* background-color: red; */
 }
 
 .col {
@@ -189,13 +206,13 @@ ul:empty {
         max-height: 220px;
     }
 
-    #search-container {
+    /* #search-container {
         min-width: 300px;
         max-width: 300px;
         bottom: 10px;
         margin-left: 0;
         left: 10px;
-    }
+    } */
 
 
 }

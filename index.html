@@ -103,7 +103,7 @@
                         <img src="img/attraction/singapore.png" class="mt-3 img-fluid">
                     </a>
                 </div>
-                <div id="search-container" class="rounded-3">
+                <!-- <div id="search-container" class="rounded-3">
                     <div class="input-group">
                         <input type="text" class="form-control" id="attraction-search"
                             placeholder="Search attraction e.g. Sentosa">
@@ -113,7 +113,7 @@
                     <div id="results">
                         <ul id="results-header"></ul>
                     </div>
-                </div>
+                </div> -->
                 <div>
                     <button id="weather-toggle-sm" class="d-block d-md-none btn btn-dark"><i
                             class="fa-solid fa-cloud-sun"></i></button>
@@ -124,36 +124,40 @@
                 </div>
 
                 <!-- info tab -->
-                <!-- <div id="info-tab">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <div id="info-tab">
+                    <ul class="nav nav-tabs bg-white" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
-                                aria-selected="true">Search <i class="fa fa-search"></i></button>
+                            <button class="nav-link active" id="search-tab" data-bs-toggle="tab"
+                                data-bs-target="#search-tab-pane" type="button" role="tab"
+                                aria-controls="search-tab-pane" aria-selected="true">Search <i
+                                    class="fa fa-search"></i></button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                data-bs-target="#profile-tab-pane" type="button" role="tab"
-                                aria-controls="profile-tab-pane" aria-selected="false">Explore <i
+                            <button class="nav-link" id="explore-tab" data-bs-toggle="tab"
+                                data-bs-target="#explore-tab-pane" type="button" role="tab"
+                                aria-controls="explore-tab-pane" aria-selected="false">Explore <i
                                     class="fa-solid fa-filter"></i></button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                data-bs-target="#contact-tab-pane" type="button" role="tab"
-                                aria-controls="contact-tab-pane" aria-selected="false">Weather <i
+                            <button class="nav-link" id="weather-tab" data-bs-toggle="tab"
+                                data-bs-target="#weather-tab-pane" type="button" role="tab"
+                                aria-controls="weather-tab-pane" aria-selected="false">Weather <i
                                     class="fa-solid fa-cloud-sun"></i></button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                data-bs-target="#contact-tab-pane" type="button" role="tab"
-                                aria-controls="contact-tab-pane" aria-selected="false"><i
+                            <button class="nav-link" id="collapse-tab" data-bs-toggle="tab"
+                                data-bs-target="#collapse-tab-pane" type="button" role="tab"
+                                aria-controls="collapse-tab-pane" aria-selected="false"><i
                                     class="fa-solid fa-caret-down"></i></button>
                         </li>
                     </ul>
+
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
-                            aria-labelledby="home-tab" tabindex="0">
-                            <div class="row mx-0 bg-light" id="search-bar-wrapper">
+
+                        <!-- search tab -->
+                        <div class="tab-pane fade show active" id="search-tab-pane" role="tabpanel"
+                            aria-labelledby="search-tab" tabindex="0">
+                            <!-- <div class="row mx-0 bg-light" id="search-bar-wrapper"> -->
                                 <div class="col p-2 bg-light">
                                     <div id="search-container" class="rounded-3">
                                         <div class="input-group">
@@ -167,17 +171,55 @@
                                         </div>
                                     </div>
                                 </div>
-                    
-                            </div>
-                            
-                           
+
+                            <!-- </div> -->
                         </div>
-                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
-                            tabindex="0">...</div>
-                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
-                            tabindex="0">...</div>
+                        
+                        <!-- explore tab -->
+                        <div class="tab-pane fade" id="explore-tab-pane" role="tabpanel" aria-labelledby="explore-tab"
+                            tabindex="0">
+                            <div class="col px-5 py-3 bg-light">
+                                <h5><strong>Explore Attractions</strong></h5>
+                                <div class="pt-2">
+                                    <input type="checkbox" name="show-layers" value="trees"/><img src="img/attraction/culture.png"
+                                        width="30" class="px-1"/>Culture<br/>
+                                </div>
+                                <div class="pt-2">
+                                    <input type="checkbox" name="show-layers" value="trees"/><img src="img/attraction/arts.png"
+                                        width="30" class="px-1"/>Arts<br/>
+                                </div>
+                                <div class="pt-2">
+                                    <input type="checkbox" name="show-layers" value="trees"/><img src="img/attraction/history.png"
+                                        width="30" class="px-1"/>History<br/>
+                                </div>
+                                <div class="pt-2">
+                                    <input type="checkbox" name="show-layers" value="trees"/><img src="img/attraction/nature.png"
+                                        width="30" class="px-1"/>Nature<br/>
+                                </div>
+                                <div class="pt-2">
+                                    <input type="checkbox" name="show-layers" value="trees" /><img src="img/attraction/architecture.png"
+                                        width="30" class="px-1"/>Architecture<br/>
+                                </div>
+                                <div class="pt-2">
+                                    <input type="checkbox" name="show-layers" value="trees" /><img src="img/attraction/recreation.png"
+                                        width="30" class="px-1"/>Recreation<br/>
+                                </div>
+                                <div>
+                                    <button id="btn-reset" class="btn btn-danger float-end">Reset</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- weather tab -->
+                        <div class="tab-pane fade" id="weather-tab-pane" role="tabpanel" aria-labelledby="weather-tab"
+                            tabindex="0">
+                            <div class="col text-center py-3 bg-light">
+                                <h5><strong>24 Hours Forecast</strong></h5>
+                            </div>
+                        </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
 
