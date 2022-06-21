@@ -180,8 +180,61 @@ async function main() {
     }
     L.control.layers({}, overlays).addTo(map);
 
+    // 24hr Weather API
+    let dailyWeatherResponse = await axios.get(WEATHER_24HR_API_URL);
 
-    // Weather API
+    // function displayDailyWeather() {
+        let dailyWeatherForecast = dailyWeatherResponse.data.items[0].general.forecast;
+        let lowTemp = dailyWeatherResponse.data.items[0].general.temperature.low;
+        let highTemp = dailyWeatherResponse.data.items[0].general.temperature.high;
+
+        if (dailyWeatherForecast == 'Fair & Warm' || dailyWeatherForecast == 'Fair (Day)') {
+            iconURL = "img/weather/sunny.png"
+        }
+
+        else if (dailyWeatherForecast == 'Partly Cloudy (Day)') {
+            iconURL = "img/weather/cloudy-day.png"
+        }
+
+        else if (dailyWeatherForecast == 'Cloudy') {
+            iconURL = "img/weather/cloudy.png"
+        }
+
+        else if (dailyWeatherForecast == 'Partly Cloudy (Night)') {
+            iconURL = "img/weather/cloudy-night.png"
+        }
+
+        else if (dailyWeatherForecast == 'Fair (Night)') {
+            iconURL = "img/weather/night.png"
+        }
+
+        else if (dailyWeatherForecast == 'Light Showers' || dailyWeatherForecast == 'Light Rain') {
+            iconURL = "img/weather/drizzle.png"
+        }
+
+        else if (dailyWeatherForecast == 'Showers' || dailyWeatherForecast == 'Moderate Rain') {
+            iconURL = "img/weather/showers.png"
+        }
+
+        else if (dailyWeatherForecast == 'Thundery Showers' || dailyWeatherForecast == 'Heavy Thundery Showers') {
+            iconURL = "img/weather/thunder.png"
+        }
+
+        let weatherText = `
+            <h4><strong>24 Hours Forecast</strong></h4>
+            <p>${dailyWeatherForecast}</p>
+            <div class="pb-4"><img src="${iconURL}" style="width: 80px; height:80px"></div>
+
+            <p><i class="fa-solid fa-temperature-low"></i> ${lowTemp} / ${highTemp} <i class="fa-solid fa-temperature-high"></i></p>
+        `
+    //      return weatherText;
+    // }
+
+    document.querySelector('#daily-weather-forecast').innerHTML = weatherText;
+    
+
+
+    // 2hr Weather API
     let weatherOverlay = L.layerGroup();
     let response = await axios.get(WEATHER_API_URL);
 
@@ -234,16 +287,16 @@ async function main() {
     }
 
     // create eventlistener for weather
-    document.querySelector("#weather-toggle-sm").addEventListener('click', function () {
-        if (map.hasLayer(weatherOverlay)) {
-            map.removeLayer(weatherOverlay);
-        }
-        else {
-            weatherOverlay.addTo(map);
-        }
-    })
+    // document.querySelector("#weather-toggle-sm").addEventListener('click', function () {
+    //     if (map.hasLayer(weatherOverlay)) {
+    //         map.removeLayer(weatherOverlay);
+    //     }
+    //     else {
+    //         weatherOverlay.addTo(map);
+    //     }
+    // })
 
-    document.querySelector("#weather-toggle-lg").addEventListener('click', function () {
+    document.querySelector("#weather-toggle").addEventListener('click', function () {
         if (map.hasLayer(weatherOverlay)) {
             map.removeLayer(weatherOverlay);
         }

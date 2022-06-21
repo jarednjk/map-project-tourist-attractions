@@ -114,18 +114,18 @@
                         <ul id="results-header"></ul>
                     </div>
                 </div> -->
-                <div>
+                <!-- <div>
                     <button id="weather-toggle-sm" class="d-block d-md-none btn btn-dark"><i
                             class="fa-solid fa-cloud-sun"></i></button>
                 </div>
                 <div>
                     <button id="weather-toggle-lg" class="d-none d-md-block btn btn-dark">Check Weather <i
                             class="fa-solid fa-cloud-sun"></i></button>
-                </div>
+                </div> -->
 
                 <!-- info tab -->
                 <div id="info-tab">
-                    <ul class="nav nav-tabs bg-white" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs bg-white rounded-top" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="search-tab" data-bs-toggle="tab"
                                 data-bs-target="#search-tab-pane" type="button" role="tab"
@@ -158,54 +158,58 @@
                         <div class="tab-pane fade show active" id="search-tab-pane" role="tabpanel"
                             aria-labelledby="search-tab" tabindex="0">
                             <!-- <div class="row mx-0 bg-light" id="search-bar-wrapper"> -->
-                                <div class="col p-2 bg-light">
-                                    <div id="search-container" class="rounded-3">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="attraction-search"
-                                                placeholder="Search attraction e.g. Sentosa">
-                                            <button id="btn-attraction-search" class="ms-0 btn btn-danger"><i
-                                                    class="fa fa-search"></i></button>
-                                        </div>
-                                        <div id="results" class="bg-light">
-                                            <ul id="results-header"></ul>
-                                        </div>
+                            <div class="col p-2 bg-light">
+                                <div id="search-container" class="rounded-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="attraction-search"
+                                            placeholder="Search attraction e.g. Sentosa">
+                                        <button id="btn-attraction-search" class="ms-0 btn btn-danger"
+                                        ><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                    <div id="results" class="bg-light">
+                                        <ul id="results-header" class="p-0 m-0">
+                                            
+                                        </ul>
                                     </div>
                                 </div>
+                            </div>
 
                             <!-- </div> -->
                         </div>
-                        
+
                         <!-- explore tab -->
                         <div class="tab-pane fade" id="explore-tab-pane" role="tabpanel" aria-labelledby="explore-tab"
                             tabindex="0">
                             <div class="col px-5 py-3 bg-light">
-                                <h5><strong>Explore Attractions</strong></h5>
+                                <h4><strong>Explore Attractions</strong></h4>
                                 <div class="pt-2">
-                                    <input type="checkbox" name="show-layers" value="trees"/><img src="img/attraction/culture.png"
-                                        width="30" class="px-1"/>Culture<br/>
+                                    <input type="checkbox" name="show-layers" value="trees" /><img
+                                        src="img/attraction/culture.png" width="30" class="px-1" />Culture<br />
                                 </div>
                                 <div class="pt-2">
-                                    <input type="checkbox" name="show-layers" value="trees"/><img src="img/attraction/arts.png"
-                                        width="30" class="px-1"/>Arts<br/>
+                                    <input type="checkbox" name="show-layers" value="trees" /><img
+                                        src="img/attraction/arts.png" width="30" class="px-1" />Arts<br />
                                 </div>
                                 <div class="pt-2">
-                                    <input type="checkbox" name="show-layers" value="trees"/><img src="img/attraction/history.png"
-                                        width="30" class="px-1"/>History<br/>
+                                    <input type="checkbox" name="show-layers" value="trees" /><img
+                                        src="img/attraction/history.png" width="30" class="px-1" />History<br />
                                 </div>
                                 <div class="pt-2">
-                                    <input type="checkbox" name="show-layers" value="trees"/><img src="img/attraction/nature.png"
-                                        width="30" class="px-1"/>Nature<br/>
+                                    <input type="checkbox" name="show-layers" value="trees" /><img
+                                        src="img/attraction/nature.png" width="30" class="px-1" />Nature<br />
                                 </div>
                                 <div class="pt-2">
-                                    <input type="checkbox" name="show-layers" value="trees" /><img src="img/attraction/architecture.png"
-                                        width="30" class="px-1"/>Architecture<br/>
+                                    <input type="checkbox" name="show-layers" value="trees" /><img
+                                        src="img/attraction/architecture.png" width="30"
+                                        class="px-1" />Architecture<br />
                                 </div>
                                 <div class="pt-2">
-                                    <input type="checkbox" name="show-layers" value="trees" /><img src="img/attraction/recreation.png"
-                                        width="30" class="px-1"/>Recreation<br/>
+                                    <input type="checkbox" name="show-layers" value="trees" /><img
+                                        src="img/attraction/recreation.png" width="30" class="px-1" />Recreation<br />
                                 </div>
                                 <div>
-                                    <button id="btn-reset" class="btn btn-danger float-end">Reset</button>
+                                    <button id="btn-reset" class="btn btn-success float-end">Reset</button>
                                 </div>
 
                             </div>
@@ -215,7 +219,12 @@
                         <div class="tab-pane fade" id="weather-tab-pane" role="tabpanel" aria-labelledby="weather-tab"
                             tabindex="0">
                             <div class="col text-center py-3 bg-light">
-                                <h5><strong>24 Hours Forecast</strong></h5>
+                                <!-- <h5><strong>24 Hours Forecast</strong></h5> -->
+                                <div id="daily-weather-forecast"></div>
+                                <div>
+                                    <button id="weather-toggle" class="btn btn-warning">Check Weather
+                                        <i class="fa-solid fa-cloud-sun"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -32,7 +32,7 @@ body {
 #search-container {
 
     
-    background-color: rgba(145, 34, 34, 0.8);
+    /* background-color: rgba(145, 34, 34, 0.8); */
 
 }
 
@@ -70,22 +70,6 @@ body {
 
 #btn-attraction-search {
     margin-left: 10px;
-}
-
-#weather-toggle-sm {
-    position: absolute;
-    z-index: 314159;
-    width: 50px;
-    top: 11px;
-    left: 146px;
-    font-size: 21px;
-}
-
-#weather-toggle-lg {
-    position: absolute;
-    z-index: 314159;
-    top: 11px;
-    left: 146px;
 }
 
 #landingPage {
@@ -148,9 +132,6 @@ ul {
     color: white;
 }
 
-#search-bar-wrapper {
-    /* background-color: red; */
-}
 
 .col {
     height: 300px;
@@ -173,7 +154,6 @@ ul:empty {
 
 #results {
     overflow-y: scroll;
-    max-height: 190px;
 }
 
 .search-result {
@@ -183,6 +163,8 @@ ul:empty {
 .hidden {
     transform: translateY(-100%);
 }
+
+
 
 @media (min-width: 576px){
     #email-subscribe {
