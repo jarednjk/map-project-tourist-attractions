@@ -105,7 +105,7 @@ async function main() {
                 <img class='img-fluid' src="${photo}">
                 <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
                 <p><strong>Description:</strong> ${attraction.properties.description}</p>
-                <button onclick='showNearbyEateries(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Nearby Eateries</button>
+                <button onclick='showNearbyFood(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Nearby Eateries</button>
                 `).addTo(attractionMarker);
                 attractionMarker.addTo(attractionGroup);
     
@@ -125,7 +125,7 @@ async function main() {
             <img class='img-fluid' src="${photo}">
             <p><strong>Address:</strong> ${attraction.properties['ADDRESSSTREETNAME']}</p>
             <p><strong>Description:</strong> ${attraction.properties.description}</p>
-            <button onclick='showNearbyEateries(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Nearby Eateries</button>
+            <button onclick='showNearbyFood(${lat},${lng})' id="${attraction.properties.INC_CRC}" class="btn btn-danger btn-sm">Nearby Eateries</button>
             `).addTo(cultureMarker);
             cultureMarker.addTo(cultureGroup);
 

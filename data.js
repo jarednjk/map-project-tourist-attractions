@@ -35,7 +35,7 @@ let surroundingAreaOfCircle = null;
 let prevLat = null;
 let prevLng = null;
 // foursquare show nearby
-async function showNearbyEateries(lat, lng) {
+async function showNearbyFood(lat, lng) {
 
     // toggle eateries
     if (foodGroup != null) {

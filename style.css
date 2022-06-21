@@ -85,17 +85,17 @@ body {
 
 #email-subscribe {
     position: absolute;
-    bottom: 25px;
+    bottom: 0px;
     right: 0px;
     left: 0px;
     margin-left: auto;
     margin-right: auto;
     height: 150px;
-    width: 470px;
+    width: auto;
 }
 
 #txt-email {
-    width: 150px;
+    width: 120px;
 }
 
 #search-box {
@@ -167,6 +167,23 @@ ul:empty {
     transform: translateY(-100%);
 }
 
+@media (min-width: 576px){
+    #email-subscribe {
+        position: absolute;
+        bottom: 25px;
+        right: 25px;
+        left: auto;
+        height: 150px;
+        width: 460px;
+    }
+    
+    #txt-email {
+        width: 130px;
+    }
+
+}
+
+
 @media (min-width: 768px){
     #results {
         max-height: 220px;
@@ -180,13 +197,5 @@ ul:empty {
         left: 10px;
     }
 
-    #email-subscribe {
-        position: absolute;
-        bottom: 25px;
-        right: 25px;
-        left: auto;
-        height: 150px;
-    }
-    
 
 }
