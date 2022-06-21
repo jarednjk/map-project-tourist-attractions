@@ -43,7 +43,7 @@ body {
 #info-tab {
     position: absolute;
     z-index: 314159;
-    width: 371px;
+    width: 307px;
     height: 342px;
     bottom: 0px;
 }
@@ -57,11 +57,15 @@ body {
 }
 
 #explore-tab {
-    color: #5cb85c;
+    color: #00BB00;
 }
 
 #weather-tab {
     color: #ee8532;
+}
+
+#collapse-tab {
+    color: #0275d8;
 }
 
 /* #attraction-search {

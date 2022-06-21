@@ -47,7 +47,7 @@ async function main() {
         });
         console.log(filteredAttractions);
 
-        if (searchString.length <= 1) {
+        if (searchString.length < 1) {
             document.querySelector('#results-header').innerHTML = "";
         } else {
             if (filteredAttractions.length >= 1) {
@@ -169,8 +169,9 @@ async function main() {
     architectureGroup.addTo(map);
     recreationGroup.addTo(map);
 
+    // create layers for each category
     function layerCheckbox(checkboxName, checkboxId, checkboxLayer) {
-        document.querySelector(`input[name=${checkboxName}]`).addEventListener('change', function() {
+        document.querySelector(`input[name=${checkboxName}]`).addEventListener('change', function () {
             if (document.querySelector(`#${checkboxId}`).checked) {
                 map.addLayer(checkboxLayer);
             }
@@ -187,7 +188,23 @@ async function main() {
     layerCheckbox('architectureName', 'architectureId', architectureGroup);
     layerCheckbox('recreationName', 'recreationId', recreationGroup);
 
+    // reset layers
+    function resetLayers(checkboxId, checkboxLayer) {
+        if (!document.querySelector(`#${checkboxId}`).checked) {
+            document.querySelector(`#${checkboxId}`).checked;
+            map.addLayer(checkboxLayer);
+        }
 
+    }
+
+    document.querySelector('#btn-reset').addEventListener('click', function () {
+        resetLayers('cultureId', cultureGroup);
+        resetLayers('artsId', artsGroup);
+        resetLayers('historyId', historyGroup);
+        resetLayers('natureId', natureGroup);
+        resetLayers('architectureId', architectureGroup);
+        resetLayers('recreationId', recreationGroup);
+    })
 
     // add the overlays to checkboxes
     // let overlays = {
@@ -240,11 +257,12 @@ async function main() {
     }
 
     let weatherText = `
-            <h4><strong>24 Hours Forecast</strong></h4>
+            <h4><strong>24-hour Forecast</strong></h4>
             <p>${dailyWeatherForecast}</p>
-            <div class="pb-4"><img src="${iconURL}" style="width: 80px; height:80px"></div>
+            <div class="pb-4"><img src="${iconURL}" style="width: 70px; height:70px"></div>
 
-            <p><i class="fa-solid fa-temperature-low"></i> ${lowTemp} / ${highTemp} <i class="fa-solid fa-temperature-high"></i></p>
+            <h4><span style="color:#0275d8"><i class="fa-solid fa-temperature-low"></i> ${lowTemp} </span>
+            /<span style="color:red"> ${highTemp} <i class="fa-solid fa-temperature-high"></i></span></h4>
         `
 
     document.querySelector('#daily-weather-forecast').innerHTML = weatherText;
@@ -330,3 +348,13 @@ document.querySelector('#logo').addEventListener('click', function () {
     landingPageDiv.classList.remove('hidden');
     mapDiv.classList.remove('hidden');
 })
+
+// document.querySelector('#search-tab').addEventListener('click', function(){
+//     document.querySelector('#search-tab').style.bottom = 0;
+// })
+
+// document.querySelector('#collapse-tab').addEventListener('click', function(){
+//     document.querySelector('.col').style.height = 0;
+//     document.querySelector('.col').style.overflow = "hidden";
+//     document.querySelector()
+// })
