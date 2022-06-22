@@ -73,6 +73,12 @@ async function main() {
         }
     });
 
+    // remove input value in search bar
+    document.querySelector('#btn-remove-search').addEventListener('click', function(){
+        document.querySelector('#attraction-search').value = "";
+        document.querySelector('#results-header').innerHTML = "";
+    })
+
 
     // create attraction cluster and group
     let cultureMarker = L.markerClusterGroup();

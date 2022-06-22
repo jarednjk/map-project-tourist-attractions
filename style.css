@@ -109,8 +109,13 @@ body {
     color: #0275d8;
 }
 
-#btn-attraction-search {
-    margin-left: 10px;
+#attraction-search {
+    border-right: transparent !important;
+}
+
+#btn-remove-search {
+    background-color: white;
+    border-left: transparent !important;
 }
 
 #landingPage {
