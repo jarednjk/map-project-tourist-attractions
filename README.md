@@ -53,6 +53,8 @@ However, the main color, red, is chosen for CTA buttons in the landing page. Thi
 ### Fonts
 
 Roboto and sans serif font are selected for a clean and cutting edge look to make it easy on the user's eyes.
+
+![roboto](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/roboto_font.png)
 <!-- On the other hand, my family might prefer visiting historical monuments. Therefore, different age groups and personalities have different interest in the choice of activities they wish to participate.
 
 Foreigners who travel to Singapore 
