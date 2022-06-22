@@ -113,3 +113,4 @@ Detailed test cases for the app can be found [here](https://github.com/jarednjk/
 - https://developer.foursquare.com/ for data on nearby eateries
 - https://www.flaticon.com/ for their icons
 - https://www.visitsingapore.com/ for their images
+- https://ui.dev/amiresponsive to display screen responsiveness across multiple devices
