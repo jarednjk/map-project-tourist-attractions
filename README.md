@@ -1,12 +1,12 @@
 # Singapore Tourist Attraction Finder
 
-This project is an interactive map guide for people who wish to explore the tourist attractions in Singapore.
+The demo of the live website can be accessed here: 
 
 ## Project Summary
 
 ### Project Context
 
-SG Tourist Attraction Finder is a mobile-responsive web application with an interactive map that allows uers to explore the different tourist attractions scattered across Singapore.
+SG Tourist Attraction Finder is a mobile-responsive web application with an interactive map that allows users to explore the different tourist attractions scattered across Singapore.
 
 ### Target Audience
 
@@ -22,17 +22,45 @@ Users want to know where are the tourist places in Singapore. The web app provid
 
 Since users with different age groups and personalities have different interest in the choice of activities they wish to participate, the web app has a filter function to toggle between the different categories of attractions.
 
-## Justification for the App
+### Justification for the App
 
-When I travel to new countries, I have no idea what the top tourist attractions are over there. When googling for top tourist attractions, websites usually promote the most popular activities which may not be category that I am interested in. As someone who prefers a relaxing trip consisting of nature and museum, it is rare to find such information. Meanwhile, my 16 year old cousin prefers going to theme parks while my 80 year old grandparents prefer visiting historical monuments.
+When I travel to new countries, I have no idea what the top tourist attractions are over there. When googling for top tourist attractions, websites usually promote the most popular activities which may not be category that I am interested in. 
+
+As someone who prefers a relaxing trip consisting of nature and museum, it is rare to find such information. Meanwhile, my 16 year old cousin prefers going to theme parks while my 80 year old grandparents prefer visiting historical monuments.
 
 Likewise, foreigners who travel to Singapore for the first time might be clueless on where to go. A kid might prefer theme parks while the grandparent might prefer visiting historical monuments. Whether you are 8 or 80, this web app will help you find something you enjoy in this beautiful country.
 
 ## UX / UI
 
+### Organisation Goal
+
+The web app aims to promote tourism activities in Singapore by providing a platform for users to discover them more easily in an unbiased manner.
+
+### User Goals
+
+Users want to know where are the tourist places in Singapore. The web app provides a picture, location and a short description of the tourist attraction on the map. As food is an important part of the travel experience, users can find up to 10 food locations within a 500m range of any attraction. 
+
+Since users with different age groups and personalities have different interest in the choice of activities they wish to participate, the web app has a filter function to toggle between the different categories of attractions.
+
 ### User Stories
 
-On the other hand, my family might prefer visiting historical monuments. Therefore, different age groups and personalities have different interest in the choice of activities they wish to participate.
+| User Story | Acceptance Criteria |
+| ----------- | ----------- |
+| As a tourist or local interested in visiting Singapore's tourist attractions, I want to easily locate a particular attraction. | Search function with autosuggestion feature |
+| I want to filter only the category of attractions I am interested in so I can narrow down my options. | Feature to filter the 6 categories of attractions |
+| I want to know the current weather condition so I can avoid outdoor activites and choose indoor ones in the event of a bad weather. | Feature to show 24hr and 2hr weather forecast |
+| I want to easily find food nearby after visiting an attraction. | Feature to show nearby eateries within a 500m range of the attraction |
+
+### Colors
+
+Vibrant colors are selected in this design to bring out the fun in these tourist attractions.
+However, the main color red is chosen for CTA buttons in the landing page. This is synonymous with the color of Singapore's flag.
+- ![#d9534f](https://via.placeholder.com/15/d9534f/000000?text=+) `#d9534f`
+
+### Fonts
+
+Roboto and sans serif font are selected for a clean and cutting edge look to make it easy on the user's eyes.
+<!-- On the other hand, my family might prefer visiting historical monuments. Therefore, different age groups and personalities have different interest in the choice of activities they wish to participate.
 
 Foreigners who travel to Singapore 
 
@@ -42,9 +70,7 @@ I've broken down the tourist attractions into 6 categories such as arts, archite
 
 Before heading down to an attraction, users can first check the current weather condition to better plan their trip and avoid disappointments. If the weather is rainy, users could opt for an indoor attraction such as a museum instead of an outdoor attraction such as a theme park.
 
-The demo of the live website can be accessed here: 
-
-# UX/UI
+The demo of the live website can be accessed here:  -->
 
 ## Features
 
@@ -88,12 +114,14 @@ Key information can be found in 4 areas of the map:
 - HTML5
 - CSS3
 - Javascript
-- [LeafletJS](leafletjs.com) for map
+- [LeafletJS](leafletjs.com) for map.
 - [Axios](https://github.com/axios/axios) for getting API and promise functions
 - [Bootstrap5](https://getbootstrap.com/) to structure layout of website and Carousel.
 - [MarkerCluster](https://www.npmjs.com/package/leaflet.markercluster) for animated marker clustering for leaflet.
+- [Fontawesome](https://fontawesome.com/icons) to input icons.
+- [Google Fonts](https://fonts.google.com/) to select font family.
 
-## Credits
+## Credits & Acknowledgement
 
 - https://data.gov.sg/ for the geojson file used to locate the tourist attractions in Singapore and the API for weather.
 - https://developer.foursquare.com/ for data on eateries.
