@@ -93,12 +93,6 @@ body {
     background-color: #f7f7f7 !important;
 }
 
-.active:focus {
-    border-color: none;
-    box-shadow: none;
-    border: 1px solid #ccc;
-}
-
 #search-tab {
     color: #d9534f;
 }

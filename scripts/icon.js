@@ -1,8 +1,8 @@
 // create YOU ARE HERE icon
 let currentLocationIcon = L.icon ({
     iconUrl: 'img/attraction/currentLocation.png',
-    iconSize: [35, 35],
-    iconAnchor: [18, 27],
+    iconSize: [30, 30],
+    iconAnchor: [15, 27],
     popupAnchor: [0, -25],
 });
 
