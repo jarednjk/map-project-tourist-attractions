@@ -43,16 +43,23 @@ Since users with different age groups and personalities have different interest 
 | I want to know the current weather condition so I can avoid outdoor activites and choose indoor ones in the event of a bad weather. | Feature to show 24hr and 2hr weather forecast |
 | I want to easily find food nearby after visiting an attraction. | Feature to show nearby eateries within a 500m range of the attraction |
 
+### Non-Functional Requirements
+
+#### Performance criteria
+- Web app should load relatively fast. Interactions within the app should also not be too laggy or else users will get impatient and quit.
+
+#### Mobile responsiveness
+- Web app should be mobile responsive as tourists might not bring their laptops with them to a foreign country. Users might also use the app on-the-go as they travel from one attraction to another.
+
 ### Colors
 
-Vibrant colors are selected in this design to bring out the fun in these tourist attractions.
-However, the main color, red, is chosen for CTA buttons in the landing page. This is synonymous with the color of Singapore's flag.
+Vibrant colors are selected in this design to bring out the fun in these tourist attractions. For the call-to-action buttons in the landing page, the main color, red, is chosen to be synonymous with the color of Singapore's flag.
 
 ![#d9534f](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/D9534F%20color.jpeg)
 
 ### Fonts
 
-Roboto and sans serif font are selected for a clean and cutting edge look to make it easy on the user's eyes.
+Roboto and sans serif are selected for a clean and cutting edge look to make it easy on the user's eyes.
 
 ![roboto](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/roboto_font.png)
 <!-- On the other hand, my family might prefer visiting historical monuments. Therefore, different age groups and personalities have different interest in the choice of activities they wish to participate.
@@ -69,7 +76,7 @@ The demo of the live website can be accessed here:  -->
 
 ### Icons & Markers
 
-The colors of all icons and markers are selected to match the bright and vibrant color scheme of the web app for consistency. Only the color of the 2-hour weather forecast is black when toggled. This provides a contrast.
+The colors of all icons and markers are selected to match the bright and vibrant color scheme of the web app for consistency. Only the weather icon color of the 2-hour forecast is black when toggled. This provides a contrast.
 
 ## Features
 
@@ -113,16 +120,16 @@ Key information can be found in 4 areas of the map:
 - HTML5
 - CSS3
 - Javascript
-- [LeafletJS](leafletjs.com) for map.
-- [Axios](https://github.com/axios/axios) for getting API and promise functions
-- [Bootstrap5](https://getbootstrap.com/) to structure layout of website and Carousel.
+- [Bootstrap v5.2](https://getbootstrap.com/) to structure layout of website and Carousel.
+- [Leaflet](leafletjs.com) for map.
 - [MarkerCluster](https://www.npmjs.com/package/leaflet.markercluster) for animated marker clustering for leaflet.
-- [Fontawesome](https://fontawesome.com/icons) to input icons.
+- [Axios](https://github.com/axios/axios) for getting API and promise functions.
+- [Font Awesome](https://fontawesome.com/icons) to input icons.
 - [Google Fonts](https://fonts.google.com/) to select font family.
 
 ## Credits & Acknowledgement
 
 - https://data.gov.sg/ for the geojson file used to locate the tourist attractions in Singapore and the API for weather.
-- https://developer.foursquare.com/ for data on eateries.
+- https://developer.foursquare.com/ for data on nearby eateries.
 - https://www.flaticon.com/ for their icons.
 - https://www.visitsingapore.com/ for their images.
