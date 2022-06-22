@@ -46,7 +46,8 @@ Since users with different age groups and personalities have different interest 
 ### Colors
 
 Vibrant colors are selected in this design to bring out the fun in these tourist attractions.
-However, the main color red is chosen for CTA buttons in the landing page. This is synonymous with the color of Singapore's flag.
+However, the main color, red, is chosen for CTA buttons in the landing page. This is synonymous with the color of Singapore's flag.
+
 ![#d9534f](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/D9534F%20color.jpeg)
 
 ### Fonts
