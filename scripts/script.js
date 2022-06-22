@@ -45,7 +45,6 @@ async function main() {
         let filteredAttractions = attractionArray.filter(function (elem) {
             return (elem.name.toLowerCase().includes(searchString));
         });
-        console.log(filteredAttractions);
 
         if (searchString.length < 1) {
             document.querySelector('#results-header').innerHTML = "";
@@ -63,7 +62,6 @@ async function main() {
                     // flyto coordinates
                     document.querySelector(`#attraction-${i}`).addEventListener('click', function () {
                         let marker = L.marker(filteredAttractions[i].coordinates);
-                        console.log(marker);
                         map.flyTo(filteredAttractions[i].coordinates, 16)
                         marker.openPopup();
                     })
@@ -119,7 +117,6 @@ async function main() {
 
         // culture overlay
         if (attraction.properties['PHOTOURL'].includes('culture') || attraction.properties['PHOTOURL'].includes('places-to-see')) {
-            console.log(attraction)
             let marker = L.marker([lat, lng], { icon: cultureIcon }).bindPopup(`
             <h5>${attraction.properties.Name}</h5>
             <img class='img-fluid' src="${photo}">
@@ -188,11 +185,11 @@ async function main() {
     layerCheckbox('architectureName', 'architectureId', architectureGroup);
     layerCheckbox('recreationName', 'recreationId', recreationGroup);
 
-    // reset layers
+    // reset layers to remove all layers
     function resetLayers(checkboxId, checkboxLayer) {
-        if (!document.querySelector(`#${checkboxId}`).checked) {
-            document.querySelector(`#${checkboxId}`).checked;
-            map.addLayer(checkboxLayer);
+        if (document.querySelector(`#${checkboxId}`).checked) {
+            document.querySelector(`#${checkboxId}`).checked = false;
+            map.removeLayer(checkboxLayer);
         }
 
     }
@@ -205,17 +202,7 @@ async function main() {
         resetLayers('architectureId', architectureGroup);
         resetLayers('recreationId', recreationGroup);
     })
-
-    // add the overlays to checkboxes
-    // let overlays = {
-    //     'Culture': cultureGroup,
-    //     'Arts': artsGroup,
-    //     'History': historyGroup,
-    //     'Nature': natureGroup,
-    //     'Architecture': architectureGroup,
-    //     'Recreation': recreationGroup
-    // }
-    // L.control.layers({}, overlays).addTo(map);
+    
 
     // 24hr Weather API
     let dailyWeatherResponse = await axios.get(WEATHER_24HR_API_URL);
@@ -348,13 +335,3 @@ document.querySelector('#logo').addEventListener('click', function () {
     landingPageDiv.classList.remove('hidden');
     mapDiv.classList.remove('hidden');
 })
-
-// document.querySelector('#search-tab').addEventListener('click', function(){
-//     document.querySelector('#search-tab').style.bottom = 0;
-// })
-
-// document.querySelector('#collapse-tab').addEventListener('click', function(){
-//     document.querySelector('.col').style.height = 0;
-//     document.querySelector('.col').style.overflow = "hidden";
-//     document.querySelector()
-// })

@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
         integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
         crossorigin="" />
+    <!-- markercluster CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
     <!-- fontawesome CSS -->
@@ -57,14 +59,12 @@
                     </div>
                 </div>
 
-                <div id="search-box" class="d-flex align-items-center justify-content-center">
+                <div id="landing-page-box" class="d-flex align-items-center justify-content-center">
                     <div class="text-center">
                         <img src="img/attraction/singapore.png" width="130" class="text-shadow">
                         <div class="mt-3">
                             <h1 class="text-white text-shadow">Unsure Where To Go?</h1>
                             <p class="text-white text-shadow">EXPLORE THE TOURIST ATTRACTIONS IN SINGAPORE</p>
-                            <!-- <input class="form-control" type="text"
-                                    placeholder="Search attraction e.g. gardens by the bay" id="attraction-search2"> -->
                             <button id="btn-get-started" class="btn btn-danger btn-lg">Get Started <small><i
                                         class="fa fa-search"></i></small></button>
                         </div>
@@ -236,9 +236,10 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <!-- our own script -->
-    <script src="icon.js"></script>
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+    <script src="scripts/map.js"></script>
+    <script src="scripts/icon.js"></script>
+    <script src="scripts/data.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
