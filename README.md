@@ -82,6 +82,7 @@ The colors of all icons and markers are selected to match the bright and vibrant
 | Display useful information of an attraction | When users click on the marker of an attraction, it will zoom in and open up to show the name, image, address and description. |
 | Reset map | This feature removes all layers and markers from the map so that it is empty. |
 | Display nearby eateries | This feature will display up to 10 nearby eateries within a 500m range from the attraction. |
+| Email marketing form | This feature allows users to submit their name and email to receive marketing information. The form is designed with validation rules to prevent invalid inputs from being submitted. |
 
 ## Limitations & Future Implementations
 
@@ -93,19 +94,23 @@ The colors of all icons and markers are selected to match the bright and vibrant
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- Javascript
-- [Bootstrap v5.2](https://getbootstrap.com/) to structure layout of website and Carousel
-- [Leaflet](leafletjs.com) for map
-- [MarkerCluster](https://www.npmjs.com/package/leaflet.markercluster) for animated marker clustering for leaflet
-- [Axios](https://github.com/axios/axios) for getting API and promise functions
-- [Font Awesome](https://fontawesome.com/icons) to input icons
-- [Google Fonts](https://fonts.google.com/) to select font family
+1. HTML5
+2. CSS3
+3. Javascript
+4. [Bootstrap v5.2](https://getbootstrap.com/) to structure layout of website and Carousel
+5. [Leaflet](leafletjs.com) for map
+6. [MarkerCluster](https://www.npmjs.com/package/leaflet.markercluster) for animated marker clustering for leaflet
+7. [Axios](https://github.com/axios/axios) for getting API and promise functions
+8. [Font Awesome](https://fontawesome.com/icons) to input icons
+9. [Google Fonts](https://fonts.google.com/) to select font family
 
 ## Testing
 
 Detailed test cases for the app can be found [here](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/leaflet_map_test_case.pdf).
+
+## Deployment
+
+The web application is hosted using [Netlify](https://www.netlify.com/), deployed directly from the main branch of this GitHub repository. For the detailed deployment steps, you may refer [here](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/).
 
 ## Credits & Acknowledgement
 
