@@ -2,7 +2,39 @@
 
 This project is an interactive map guide for people who wish to explore the tourist attractions in Singapore.
 
-## Summary:
+## Project Summary
+
+### Project Context
+
+SG Tourist Attraction Finder is a mobile-responsive web application with an interactive map that allows uers to explore the different tourist attractions scattered across Singapore.
+
+### Target Audience
+
+The target audience is catered to foreigners of all ages who travel to Singapore for the first time. However, since there are so many attractions here, locals who wish to further explore their own country can also use the web app. Since there is no particular occupation and literacy level to visit Singapore, the web app must be easy to use and intuitive for both an 8-year-old child and an 80-year-old grandparent.
+
+### Organisation Goal
+
+The web app aims to promote tourism activities in Singapore by providing a platform for users to discover them more easily in an unbiased manner.
+
+### User Goals
+
+Users want to know where are the tourist places in Singapore. The web app provides a picture, location and a short description of the tourist attraction on the map. As food is an important part of the travel experience, users can find up to 10 food locations within a 500m range of any attraction. 
+
+Since users with different age groups and personalities have different interest in the choice of activities they wish to participate, the web app has a filter function to toggle between the different categories of attractions.
+
+## Justification for the App
+
+When I travel to new countries, I have no idea what the top tourist attractions are over there. When googling for top tourist attractions, websites usually promote the most popular activities which may not be category that I am interested in. As someone who prefers a relaxing trip consisting of nature and museum, it is rare to find such information. Meanwhile, my 16 year old cousin prefers going to theme parks while my 80 year old grandparents prefer visiting historical monuments.
+
+Likewise, foreigners who travel to Singapore for the first time might be clueless on where to go. A kid might prefer theme parks while the grandparent might prefer visiting historical monuments. Whether you are 8 or 80, this web app will help you find something you enjoy in this beautiful country.
+
+## UX / UI
+
+### User Stories
+
+On the other hand, my family might prefer visiting historical monuments. Therefore, different age groups and personalities have different interest in the choice of activities they wish to participate.
+
+Foreigners who travel to Singapore 
 
 The demographics is mostly targeted at foreigners who are travelling to Singapore for the first time on a free and easy tour. Since they do not have a tour guide to bring them around, they might not know where are the popular places to visit. However, it can also be used by locals who have yet to explore every attraction place in Singapore. 
 
