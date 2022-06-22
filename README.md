@@ -10,17 +10,9 @@ SG Tourist Attraction Finder is a mobile-responsive web application with an inte
 
 ### Target Audience
 
-The target audience is catered to foreigners of all ages who travel to Singapore for the first time. However, since there are so many attractions here, locals who wish to further explore their own country can also use the web app. Since there is no particular occupation and literacy level to visit Singapore, the web app must be easy to use and intuitive for both an 8-year-old child and an 80-year-old grandparent.
+The target audience is catered to foreigners of all ages who travel to Singapore for the first time. However, with so many attractions here, locals who wish to further explore Singapore can also use the web app. 
 
-### Organisation Goal
-
-The web app aims to promote tourism activities in Singapore by providing a platform for users to discover them more easily in an unbiased manner.
-
-### User Goals
-
-Users want to know where are the tourist places in Singapore. The web app provides a picture, location and a short description of the tourist attraction on the map. As food is an important part of the travel experience, users can find up to 10 food locations within a 500m range of any attraction. 
-
-Since users with different age groups and personalities have different interest in the choice of activities they wish to participate, the web app has a filter function to toggle between the different categories of attractions.
+Since there is no particular occupation and literacy level to visit Singapore, the web app must be easy to use and intuitive for both an 8-year-old child and an 80-year-old grandparent.
 
 ### Justification for the App
 
@@ -71,6 +63,8 @@ I've broken down the tourist attractions into 6 categories such as arts, archite
 Before heading down to an attraction, users can first check the current weather condition to better plan their trip and avoid disappointments. If the weather is rainy, users could opt for an indoor attraction such as a museum instead of an outdoor attraction such as a theme park.
 
 The demo of the live website can be accessed here:  -->
+
+
 
 ## Features
 
