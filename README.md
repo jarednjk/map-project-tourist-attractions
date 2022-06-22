@@ -47,7 +47,7 @@ Since users with different age groups and personalities have different interest 
 
 Vibrant colors are selected in this design to bring out the fun in these tourist attractions.
 However, the main color red is chosen for CTA buttons in the landing page. This is synonymous with the color of Singapore's flag.
-- ![#d9534f](https://via.placeholder.com/15/d9534f/000000?text=+) `#d9534f`
+![#d9534f](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/D9534F%20color.jpeg)
 
 ### Fonts
 
@@ -64,7 +64,9 @@ Before heading down to an attraction, users can first check the current weather 
 
 The demo of the live website can be accessed here:  -->
 
+### Icons & Markers
 
+The colors of all icons and markers are selected to match the bright and vibrant color scheme of the web app for consistency. Only the color of the 2-hour weather forecast is black when toggled. This provides a contrast.
 
 ## Features
 
