@@ -1,6 +1,6 @@
 # Singapore Tourist Attraction Finder
 
-The demo of the live website can be accessed here: 
+The demo of the live website can be accessed [here](https://sg-tourist-attraction-finder.netlify.app/index.html).
 
 ## Project Summary
 
@@ -82,7 +82,25 @@ The colors of all icons and markers are selected to match the bright and vibrant
 
 ## Features
 
-This is a one page web application that is divided into 2 sections: landing page and map.
+| Feature | Description |
+| ----------- | ----------- |
+| Search for tourist attraction by name | User can search for any tourist attraction by its name. This feature is implemented using the filter() method. Autosuggestion is also provided to the user as they key in the search bar. This feature is implemented using the keyup event. |
+| Display a certain category of attractions on the map | Users can choose to show only the layers they wish to see to reduce cluttering on the map. |
+| Display weather forecast | Users can check the 2-hour and 24-hour forecast before making a trip down to an outdoor activity. |
+| Display current location | Users can see their current location to check what attractions are near them now. |
+| Display useful information of an attraction | When users click on the marker of an attraction, it will zoom in and open up to show the name, image, address and description. |
+| Reset map | This feature removes all layers and markers from the map so that it is empty. |
+| Display nearby eateries | This feature will display up to 10 nearby eateries within a 500m range from the attraction. |
+
+### Limitations & Future Implementations
+
+| Limitation | Future Implementation |
+| ----------- | ----------- |
+| Tourists might not know how to get to the attraction from their current location. | Provide a routing service to guide them to their desired destination. |
+| Tourists might not know what category of activities suit them. | Create a quiz to retrieve more information to provide a personalised attraction category for them. |
+| Tourists might want more fun and interaction. | Create a random attraction generator for tourist who are spontaneous enough to try any activity. |
+
+<!-- This is a one page web application that is divided into 2 sections: landing page and map.
 
 On the landing page, it welcomes users with a carousel that showcases 8 beautiful attractions in Singapore. When users are ready to start searching where to visit in Singapore, they can click on the "Get Started" CTA to trigger the map section.
 
@@ -115,7 +133,7 @@ Key information can be found in 4 areas of the map:
 ### Nearby food
 
 - Since tourist attraction and food goes hand-in-hand, when user clicks on an attraction marker, there is a button for them to show nearby food.
-- Clicking on the marker will trigger 10 dining options within a range of 500m.
+- Clicking on the marker will trigger 10 dining options within a range of 500m. -->
 
 ## Technologies Used
 
@@ -131,7 +149,7 @@ Key information can be found in 4 areas of the map:
 
 ## Testing
 
-Detailed test cases can be found [here](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/leaflet_map_test_case.pdf).
+Detailed test cases for the app can be found [here](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/leaflet_map_test_case.pdf).
 
 ## Credits & Acknowledgement
 
