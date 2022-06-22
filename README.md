@@ -45,11 +45,13 @@ Since users with different age groups and personalities have different interest 
 
 ### Non-Functional Requirements
 
-#### Performance criteria
-- Web app should load relatively fast. Interactions within the app should also not be too laggy or else users will get impatient and quit.
+#### Performance criteria:
+- Web app should load relatively fast
+- Interactions within the app should also not be too laggy or else users will get impatient and quit
 
-#### Mobile responsiveness
-- Web app should be mobile responsive as tourists might not bring their laptops with them to a foreign country. Users might also use the app on-the-go as they travel from one attraction to another.
+#### Mobile responsiveness:
+- Web app should be mobile responsive as tourists might not bring their laptops with them to a foreign country
+- Users might use the app on-the-go as they travel from one attraction to another
 
 ### Colors
 
@@ -126,6 +128,10 @@ Key information can be found in 4 areas of the map:
 - [Axios](https://github.com/axios/axios) for getting API and promise functions.
 - [Font Awesome](https://fontawesome.com/icons) to input icons.
 - [Google Fonts](https://fonts.google.com/) to select font family.
+
+## Testing
+
+Detailed test cases can be found [here](https://github.com/jarednjk/map-project-tourist-attractions/blob/main/img/readme/leaflet_map_test_case.pdf).
 
 ## Credits & Acknowledgement
 
