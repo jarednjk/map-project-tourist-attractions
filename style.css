@@ -146,10 +146,12 @@ ul:empty {
 }
 
 #results-header li:hover {
-    background: #c0bbbb;
+    color: white;
+    background: #d9534f;
 }
 
 #results {
+    max-height: 240px;
     overflow-y: scroll;
 }
 
@@ -170,12 +172,5 @@ ul:empty {
 
     #txt-email {
         width: 130px;
-    }
-}
-
-
-@media (min-width: 768px) {
-    #results {
-        max-height: 240px;
     }
 }
