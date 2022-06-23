@@ -100,7 +100,7 @@ async function main() {
         let lat = attraction.properties.Latitude;
         let lng = attraction.properties.Longtitude;
         // create img
-        let photo = attraction.properties['PHOTOURL'].split('"')[3];
+        let photo = attraction.properties['PHOTOURL'].replace('yoursingapore', 'visitsingapore').split('"')[3];
 
         function attractionOverlay(category, attractionIcon, attractionMarker, attractionGroup) {
             if (attraction.properties['PHOTOURL'].includes(`${category}`)) {
